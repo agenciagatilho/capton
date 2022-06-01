@@ -79,7 +79,7 @@ h1{
     -webkit-mask-origin: content-box;
 
     background-image: url('../images/ondas-compress.webp');
-    background-size: 500% 500%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-origin: content-box;

@@ -1,0 +1,142 @@
+@font-face {
+    font-family: 'Hando';
+    src: url('../fonts/Hando-Regular.otf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Hando';
+    src: url('../fonts/Hando-Black.otf');
+    font-weight: 900;
+}
+
+:root{
+    --bg: #EFF2F6;
+    --text: #093140;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html{
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: 'Hando';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+
+    overflow: hidden;
+}
+html,body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    margin: 0;
+    padding: 0;
+
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+#loading-page{
+    margin: auto;
+    width: 780px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    gap: 90px;
+}
+
+#loading-page ._mask_water_background{
+    width: 177px;
+    height: 181px;
+    mask-image: url('../images/mask-water-background.svg');
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-origin: content-box;
+
+    -webkit-mask-image: url('../images/mask-water-background.svg');
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-origin: content-box;
+
+    background-image: url('../images/ondas-compress.webp');
+    background-size: 500% 500%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+}
+
+#loading-page h1{
+    margin-bottom: -50px;
+}
+#loading-page p{
+    margin-bottom: -55px;
+}
+
+#loading-page ._social_media{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+#loading-page ._social_media a{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 780px){
+    #loading-page{
+        margin: auto;
+        width: 90%;
+        height: 90vh;
+        gap: 50px;
+    }
+    #loading-page svg{
+        width: 70vw;
+    }
+    #loading-page ._mask_water_background{
+        width: 30vw;
+        height: 30vw;
+        mask-size: 100% 100%;
+        -webkit-mask-size: 100% 100%;
+    }
+    #loading-page h1{
+        font-size: 36px;
+        line-height: 42px;
+        margin-bottom: -30px;
+    }
+    #loading-page p{
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: -30px;
+    }
+    #loading-page ._social_media{
+        gap: 10px;
+    }
+    #loading-page ._social_media a{
+        width: 100%;
+        height: max-content;
+    }
+}

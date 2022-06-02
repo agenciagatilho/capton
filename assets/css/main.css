@@ -105,6 +105,9 @@ h1{
     align-items: center;
     gap: 20px;
 }
+#loading-page ._social_media .__instagram{
+    padding-top: 3px;
+}
 #loading-page ._social_media a{
     width: 100%;
     height: max-content;
@@ -113,6 +116,7 @@ h1{
 }
 #loading-page ._social_media svg{
     width: 120px;
+    height: auto;
 }
 
 

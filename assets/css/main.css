@@ -45,13 +45,13 @@ h1{
     padding: 0;
 
     font-weight: 900;
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 36px;
+    line-height: 48px;
 }
 
 #loading-page{
     margin: auto;
-    width: 780px;
+    width: 380px;
     height: 100vh;
 
     display: flex;
@@ -60,12 +60,12 @@ h1{
     align-items: center;
     justify-content: center;
 
-    gap: 90px;
+    gap: 5px;
 }
 
 #loading-page ._mask_water_background{
-    width: 177px;
-    height: 181px;
+    width: calc(177px * 1.5);
+    height: calc(181px * 1.5);
     mask-image: url('../images/mask-water-background.svg');
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
@@ -86,13 +86,20 @@ h1{
 }
 
 #loading-page h1{
-    margin-bottom: -50px;
+    margin-top: 55px;
 }
 #loading-page p{
-    margin-bottom: -55px;
+    margin-bottom: 55px;
 }
 
 #loading-page ._social_media{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+#loading-page ._social_media >*{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,6 +110,9 @@ h1{
     height: max-content;
     display: flex;
     align-items: center;
+}
+#loading-page ._social_media svg{
+    width: 120px;
 }
 
 

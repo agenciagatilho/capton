@@ -14,6 +14,9 @@ module.exports = {
   ],
   plugins: [
   ],
+  ignorePatterns: [
+    '**/js/*.js'
+  ],
   // add your custom rules here
   rules: {
     'vue/multi-word-component-names': 'off'

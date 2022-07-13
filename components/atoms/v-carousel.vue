@@ -23,7 +23,7 @@ export default {
         infinite: true,
         speed: 300,
         // focusOnSelect: true,
-        slidesToShow: 1,
+        // slidesToShow: 1,
         slidesToScroll: 1,
         variableWidth: true
       })

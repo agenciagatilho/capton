@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Intelo';
+  src: url('@/assets/fonts/Intelo-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Hando';
+  src: url('@/assets/fonts/Hando-Regular.otf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Hando';
+  src: url('@/assets/fonts/Hando-Bold.otf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Hando';
+  src: url('@/assets/fonts/Hando-Black.otf');
+  font-weight: 900;
+}

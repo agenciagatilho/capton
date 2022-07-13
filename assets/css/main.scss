@@ -1,0 +1,88 @@
+:root{
+  --text: #093140;
+  --text-light: #FFFFFF;
+
+  --primary: #97BCD5;
+  --secondary: #003FF2;
+
+  --bg: #EFF2F6;
+  --bg-secondary: #D3E1EB;
+}
+
+html {
+  font-family: 'Hando';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: var(--text);
+  overflow-x: hidden;
+}
+* {
+  outline: none;
+  scroll-behavior: smooth;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 72px;
+}
+h2 {
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 56px;
+
+  &.small{
+    font-size: 36px;
+    line-height: 42px;
+  }
+}
+h3 {
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 42px;
+  &.small{
+    font-size: 28px;
+    line-height: 42px;
+  }
+}
+button:not(.not), .default_button{
+  @apply bg-$secondary rounded-15px
+         font-semibold text-center text-$text-light
+         px-20px pt-12px pb-8px;
+  line-height: 18px;
+
+  &.alt{
+    @apply text-16px text-$text bg-$primary
+           pt-7px pb-3px px-15px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  html {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  h1 {
+    font-size: 42px;
+    line-height: 48px;
+  }
+  h2 {
+    font-size: 28px;
+    line-height: 32px;
+    &.small{
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+  h3 {
+    font-size: 24px;
+    line-height: 28px;
+    &.small{
+      font-size: 22px;
+      line-height: 28px;
+    }
+  }
+}

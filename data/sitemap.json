@@ -1,0 +1,30 @@
+{
+  "home": {
+    "title": "",
+    "url": "/"
+  },
+  "whoWeAre": {
+    "title": "quem somos",
+    "url": "quem-somos"
+  },
+  "investInGoodBusiness": {
+    "title": "invista em bons negócios",
+    "url": "invista-em-bons-negocios"
+  },
+  "methodology": {
+    "title": "metodologia",
+    "url": "metodologia"
+  },
+  "contact": {
+    "title": "contato",
+    "url": "contact"
+  },
+  "privacy": {
+    "title": "Política de Privacidade",
+    "url": "politica-de-privacidade"
+  },
+  "gatilho": {
+    "title": "Desenvolvido por Gatilho",
+    "url": "https://agenciagatilho.com.br/"
+  }
+}

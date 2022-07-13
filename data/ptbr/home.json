@@ -1,0 +1,134 @@
+{
+  "banner": {
+    "title": "Impulsionadora de negócios",
+    "description": "Ativamos conexões que geram inspiração e trazem resultados impulsionando empresas de diversos segmentos e tamanhos, através de um processo estratégico que mostra <strong>a direção certa</strong>.",
+    "cta": "Conheça a Capton"
+  },
+  "whatWeDo": {
+    "title": "O que fazemos?",
+    "items": {
+      "investment": {
+        "title": "Investimento",
+        "description": "Disponibilizamos recursos financeiros para empresas com o negócio já estruturado e em operação, juntamente com toda nossa rede de contatos, sempre acompanhada de nosso smart."
+      },
+      "create": {
+        "title": "Criação",
+        "description": "Identificamos novas oportunidades olhando para o mercado de forma singular e, assim, apostamos no desenvolvimento de ideias inovadoras que atendam às necessidades do mercado."
+      },
+      "boost": {
+        "title": "Impulsionamento",
+        "description": "Aplicamos nossa metodologia na empresa selecionada para gerar resultados, fazê-la crescer comercialmente e, principalmente, prepará-la para receber investimento."
+      }
+    }
+  },
+  "boostingPeopleTransformingBusinesses": {
+    "title": "Impulsionando pessoas, transformando negócios.",
+    "description": "Somos uma impulsionadora de negócios e nosso propósito é gerar resultados, criar pontes e trocar conhecimentos antes de investir.",
+    "items": {
+      "experience": {
+        "title": "Como um experiente capitão, navegamos os mares com excelência.",
+        "description": "Através de uma metodologia própria, potencializamos negócios. Ajudamos a identificar os pontos fortes da sua empresa, focando nos que precisam de mais atenção. Auxiliamos empresas a estruturar processos de acordo com sua necessidade e, dessa forma, se desenvolver operacionalmente."
+      },
+      "security": {
+        "title": "Segurança e estabilidade para navegar mesmo em alto mar.",
+        "description": "Navegamos ao seu lado trazendo uma nova visão de mercado, identificando oportunidades, compartilhando conhecimento e ajudando a aplicar nossa metodologia dentro do seu negócio."
+      }
+    },
+    "cta": "Conheça nossa tripulação"
+  },
+  "firstFocusBoost": {
+    "title": "A primeira impulsionadora focada em auxiliar seu desenvolvimento operacional.",
+    "items": [
+      {
+        "full": "Somos experientes não só pelo tempo de trabalho, mas principalmente por sermos especialistas naquilo que fazemos. Desenvolvemos um processo único, mas não fechado, em busca daquilo que nos propomos a fazer."
+      },
+
+      {
+        "full": "Olhamos para o futuro e trabalhamos para conseguir novas formas de realizar processos, gerando mudanças para os ambientes em que estamos inseridos. Carregamos isso na nossa essência. Não queremos fazer o que todos fazem, queremos inovar, e sabemos exatamente qual caminho precisamos seguir e de que forma devemos navegar.",
+        "resume": "Olhamos para o futuro e trabalhamos para conseguir novas formas de realizar processos, gerando mudanças para os ambientes em que estamos inseridos. Carregamos isso na nossa essência."
+      },
+
+      {
+        "full": "Queremos ser transformação nos mercados e negócios em que atuamos, mas, além disso, queremos transformar as pessoas que entram em contato com a Capton."
+      },
+
+      {
+        "full": "Acreditamos que as pessoas são a base dos negócios. Com isso, conectamos pessoas para descobrir talentos, multiplicar negócios e resolver problemas."
+      }
+    ],
+    "cta": "Ative conexões agora"
+  },
+  "actionsTransformMarket": {
+    "title": "Ações que transformam mercados",
+    "description": "Olhamos para o mercado como um oceano vasto, profundo e poderoso. É dentro desse oceano que queremos navegar, captando oportunidades para ligar todo o potencial de pessoas e empresas.",
+    "cta": "Conheça abaixo nossa metodologia"
+  },
+  "aboutUs": {
+    "items": [
+      {
+        "title": "Identificamos ideias inovadoras",
+        "description": "Captamos ideias inovadoras e ajudamos novas empresas a definir estratégias de negócio e gestão, além de conectar pessoas que possam contribuir com setores como operação, desenvolvimento, mercado e vendas em um processo incubatório para validação da proposta e lapidação potencializando os resultados de mercado."
+      },
+      {
+        "title": "Impulsionando com nosso Smart",
+        "description": "Depois de acompanhar e entender a sinergia, empresas são selecionadas para crescer com a gente através de nossa experiência e rede de contatos. Trabalhamos juntos entregando resultados reais."
+      },
+      {
+        "title": "Money para escalar",
+        "description": "Investimos em empresas indo além do valor monetário. Após resultados concretos, crescimento provado e gargalos resolvidos, o cheque vem para escalar seu negócio."
+      },
+      {
+        "title": "Também fazemos aquisições e criação de empresas",
+        "description": "Adquirimos empresas com potencial de expansão impulsionando o negócio e direcionando os melhores investimentos para garantir o desenvolvimento de todos os setores e o crescimento da empresa."
+      }
+    ],
+    "cta": "Quero transformar meu negócio"
+  },
+  "companies": {
+    "items": {
+      "indexed": {
+        "title": "Empresas cadastradas",
+        "description": "Empresas que se cadastraram no nosso site mas ainda não fazem parte do grupo Capton."
+      },
+      "accompanied": {
+        "title": "Empresas acompanhadas",
+        "description": "São empresas que já possuem um relacionamento com nossa equipe e estão qualificadas para futuras oportunidades de investimentos. Essa lista de empresas tem contato mensal com a Capton para coleta de informações que nutrem nosso software, mas não recebem auxílio direto para o desenvolvimento.",
+        "resume": "São empresas que já possuem um relacionamento com nossa equipe e estão qualificadas para futuras oportunidades de investimentos."
+      },
+      "boosted": {
+        "title": "Empresas impulsionadas",
+        "description": "São empresas que recebem esforço para crescimento. Nesse grupo, a metodologia da Capton é aplicada mensalmente com foco em uma etapa por mês, desenvolvendo o fluxo completo em seis meses, a fim de preparar a impulsionada para receber investimento."
+      },
+      "investee": {
+        "title": "Empresas investidas",
+        "description": "Esse grupo é formado por empresas que se cadastraram no site e foram reconhecidas como aptas a passar direto para a fase de investimento ou empresas que já passaram por todo o funil. Essas empresas receberam investimento da Capton para desenvolvimento."
+      }
+    },
+    "cta": "Fale conosco"
+  },
+  "transformMyBusiness": {
+    "title": "Quero transformar meu negócio",
+    "description": "Entre em contato com a Capton, tire suas dúvidas sobre nossa atuação e tenha uma nova visão sobre as oportunidades do mercado.",
+    "form": {
+      "name": "Nome",
+      "email": "E-mail",
+      "city": "Cidade/Estado",
+      "operating": "Segmento de atuação",
+      "site": "Site",
+      "send": "Enviar"
+    }
+  },
+  "investorsChallenger": {
+    "title": "Investidores que desafiam a zona de conforto",
+    "description": "Invista com segurança, acompanhando as melhores oportunidades através de um dashboard exclusivo disponível para um grupo seleto de investidores.<br><strong>Faça parte desse grupo.</strong>",
+    "cta": "Quero fazer parte do Capton Club"
+  },
+  "captonClub": {
+    "title": "Capton Club",
+    "description": [
+      "Nossa metodologia foi desenvolvida com foco em captar, acompanhar, impulsionar e escolher as melhores opções de empresas para investidores, com base na estruturação de processos.",
+
+      "Os investidores Capton recebem as melhores oportunidades de investimento com exclusividade. O grupo é formado por pessoas selecionadas, que possuem perfil empreendedor para ajudar a impulsionar negócios inovadores. "
+    ]
+  }
+}

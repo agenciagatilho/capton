@@ -21,7 +21,8 @@ export default {
         dots: true,
         arrows: false,
         infinite: true,
-        speed: 500,
+        speed: 300,
+        // focusOnSelect: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         variableWidth: true
@@ -45,13 +46,13 @@ export default {
       state: useCarouselState()
     }
   },
-  mounted () {
-    console.log(this.state[this.name], this.name)
-  },
   computed: {
     isShow () {
       return this.state[this.name]
     }
+  },
+  mounted () {
+    console.log(this.state[this.name], this.name)
   }
 }
 </script>

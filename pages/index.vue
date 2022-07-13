@@ -13,8 +13,14 @@
         </h2>
       </span>
       <v-carousel v-if="home.firstFocusBoost.items" class="_items" name="firstFocusBoost" :style="`--list: ${home.firstFocusBoost.items.length * 2};`">
-        <item-carousel v-for="(item, index) in home.firstFocusBoost.items" :key="'focus_boost' + index" name="firstFocusBoost" :description="item.full" :resume="item.resume" />
-        <item-carousel v-for="(item, index) in home.firstFocusBoost.items" :key="'focus_boost' + index" name="firstFocusBoost" :description="item.full" :resume="item.resume" />
+        <item-carousel
+          v-for="(item, index) in home.firstFocusBoost.items"
+          :key="'focus_boost' + index"
+          only
+          name="firstFocusBoost"
+          :description="item.full"
+          :resume="item.resume"
+        />
       </v-carousel>
       <span class="container">
         <nuxt-link class="default_button" to="/">
@@ -23,11 +29,11 @@
       </span>
     </v-container>
 
-    <v-banner class="_actions_transform_market" :item="home.actionsTransformMarket" cta="/" />
+    <v-banner id="metodologia" class="_actions_transform_market" :item="home.actionsTransformMarket" cta="/" />
 
     <v-about-us :item="home.aboutUs" />
 
-    <v-container nolimit class="_companies background_secondary">
+    <v-container id="invista-em-bons-negocios" nolimit class="_companies background_secondary">
       <v-carousel
         v-if="home.companies.items"
         class="_items"
@@ -64,13 +70,6 @@
           :resume="home.companies.items.investee.resume"
           name="companies"
         />
-        <item-carousel
-          :image="{src: 'icons/indexed.svg', width: '40px', height: '40px'}"
-          :title="home.companies.items.indexed.title"
-          :description="home.companies.items.indexed.description"
-          :resume="home.companies.items.indexed.resume"
-          name="companies"
-        />
       </v-carousel>
       <span class="container">
         <nuxt-link class="default_button" to="/">
@@ -79,7 +78,7 @@
       </span>
     </v-container>
 
-    <v-contact-form-home :item="home.transformMyBusiness" />
+    <v-contact-form-home id="contato" :item="home.transformMyBusiness" />
 
     <v-container class="_investors_challenger">
       <v-image src="/images/investidores_que_desafiam.png" />

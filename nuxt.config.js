@@ -53,7 +53,8 @@ export default {
     { src: '~/plugins/getCities.js', mode: 'client' },
     { src: '~/plugins/firebase.js', mode: 'client' },
     { src: '~/plugins/pinia.js' },
-    { src: '~/plugins/toast.js', mode: 'client' }
+    { src: '~/plugins/toast.js', mode: 'client' },
+    { src: '~/plugins/gsap.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

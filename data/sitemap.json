@@ -5,19 +5,19 @@
   },
   "whoWeAre": {
     "title": "quem somos",
-    "url": "quem-somos"
+    "url": "socios"
   },
   "investInGoodBusiness": {
     "title": "invista em bons negócios",
-    "url": "invista-em-bons-negocios"
+    "url": "/#invista-em-bons-negocios"
   },
   "methodology": {
     "title": "metodologia",
-    "url": "metodologia"
+    "url": "/#metodologia"
   },
   "contact": {
     "title": "contato",
-    "url": "contact"
+    "url": "#contato"
   },
   "privacy": {
     "title": "Política de Privacidade",

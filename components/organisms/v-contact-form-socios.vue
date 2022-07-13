@@ -8,8 +8,8 @@
       <v-input :placeholder="item.form.name" id="name" :maxlength="100" />
       <v-input :placeholder="item.form.email" id="email" type="email" :maxlength="255" />
       <v-input :placeholder="item.form.city" id="city" :maxlength="100" />
-      <v-input :placeholder="item.form.operating" id="operating" :maxlength="100" />
-      <v-input :placeholder="item.form.site" id="site" :maxlength="100" />
+      <v-input :placeholder="item.form.company" id="company" :maxlength="100" />
+      <v-input :placeholder="item.form.message" id="message" type="textarea" :maxlength="2550" :rows="4" />
       <button type="submit">
         {{ item.form.send }}
       </button>

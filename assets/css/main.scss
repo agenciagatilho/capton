@@ -59,6 +59,15 @@ button:not(.not), .default_button{
   }
 }
 
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0.7;
+}
+
 @media screen and (max-width: 768px){
   html {
     font-size: 18px;

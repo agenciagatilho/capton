@@ -30,7 +30,7 @@ export default {
       transform: translate3d(0px, 0px, 0px);
     }
     50%{
-      transform: translate3d(0px, -7px, 0px);
+      transform: translate3d(0px, -8px, 0px);
     }
     100%{
       transform: translate3d(0px, 0px, 0px);

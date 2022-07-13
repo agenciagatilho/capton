@@ -23,42 +23,40 @@ export default {
     }
   },
   mounted () {
-    // const { gsap } = require('gsap')
-    // const { ScrollTrigger } = require('gsap/ScrollTrigger')
-    // gsap.registerPlugin(ScrollTrigger)
+    const gsap = this.$gsap.base
 
-    // const items = gsap.utils.toArray('._about_us ._item')
-    // const arrowMasked = document.querySelector('._about_us ._animated_arrow')
-    // const arrowDown = document.querySelector('._about_us ._down_arrow')
+    const items = gsap.utils.toArray('._about_us ._item')
+    const arrowMasked = document.querySelector('._about_us ._animated_arrow')
+    const arrowDown = document.querySelector('._about_us ._down_arrow')
 
-    // items.forEach((item, index) => {
-    //   gsap.timeline({
-    //     scrollTrigger: {
-    //       trigger: item,
-    //       start: 'center center',
-    //       end: 'top center',
-    //       toggleActions: 'play none reverse none'
-    //     }
-    //   }).to(arrowMasked, {
-    //     rotation: -90 * index,
-    //     y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
-    //     duration: 0.8,
-    //     ease: 'ease'
-    //   })
+    items.forEach((item, index) => {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: 'center center',
+          end: 'center center',
+          toggleActions: 'play none reverse none'
+        }
+      }).to(arrowMasked, {
+        rotation: -90 * index,
+        y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
+        duration: 0.8,
+        ease: 'ease'
+      })
 
-    //   gsap.timeline({
-    //     scrollTrigger: {
-    //       trigger: item,
-    //       start: 'center center',
-    //       end: 'top center',
-    //       toggleActions: 'play none reverse none'
-    //     }
-    //   }).to(arrowDown, {
-    //     y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
-    //     duration: 0.8,
-    //     ease: 'ease'
-    //   })
-    // })
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: 'center center',
+          end: 'top center',
+          toggleActions: 'play none reverse none'
+        }
+      }).to(arrowDown, {
+        y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
+        duration: 0.8,
+        ease: 'ease'
+      })
+    })
   }
 }
 </script>
@@ -107,14 +105,14 @@ export default {
 
       ._down_arrow{
         @apply w-38px h-38px
-              absolute -left-17px top-162px
+              absolute -left-17px top-162px z-1
               bg-no-repeat bg-cover;
         background-image: url('/images/arrow_down.png');
       }
 
       ._animated_arrow{
         @apply w-200px h-200px mr-110px
-              absolute right-0 top-82px
+              absolute right-0 top-82px z-1
               bg-no-repeat bg-cover;
         background-image: url('/images/masked_arrow_background.gif');
         mask: no-repeat center url('/images/masked_arrow_mask.png');

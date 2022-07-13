@@ -8,13 +8,43 @@
 </template>
 
 <script>
-// import footer from '@/data/ptbr/footer.json'
-// import social from '@/data/ptbr/social_medias.json'
 export default {
   data () {
     return {
-      // footer,
-      // social
+    }
+  },
+  mounted () {
+    this.startAnimation()
+  },
+  methods: {
+    startAnimation () {
+      const gsap = this.$gsap.base
+      const ScrollTrigger = this.$gsap.ScrollTrigger
+
+      const items = gsap.utils.toArray('#body main .container >*')
+
+      items.forEach((item, index) => {
+        const anim = gsap.fromTo(
+          item,
+          {
+            autoAlpha: 0.4,
+            y: -50
+          },
+          {
+            durantion: 0.5,
+            autoAlpha: 1,
+            y: 1
+          }
+        )
+
+        ScrollTrigger.create({
+          trigger: item,
+          animation: anim,
+          start: 'top bottom',
+          end: 'bottom top',
+          toggleActions: 'restart none none none'
+        })
+      })
     }
   }
 }

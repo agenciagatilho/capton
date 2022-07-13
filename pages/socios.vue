@@ -28,43 +28,43 @@ export default {
     }
   },
   mounted () {
-    const { gsap } = require('gsap')
-    const { ScrollTrigger } = require('gsap/ScrollTrigger')
-    gsap.registerPlugin(ScrollTrigger)
+    // const { gsap } = require('gsap')
+    // const { ScrollTrigger } = require('gsap/ScrollTrigger')
+    // gsap.registerPlugin(ScrollTrigger)
 
-    const items = gsap.utils.toArray('._partners ._item')
-    const arrowDown = document.querySelector('._partners ._down_arrow')
+    // const items = gsap.utils.toArray('._partners ._item')
+    // const arrowDown = document.querySelector('._partners ._down_arrow')
 
-    items.forEach((item, index) => {
-      gsap.set(item, {
-        opacity: 0.4
-      })
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'center center',
-          end: 'top center',
-          toggleActions: 'play none reverse none'
-        }
-      }).to(item, {
-        opacity: 1,
-        duration: 0.8,
-        ease: 'ease'
-      })
+    // items.forEach((item, index) => {
+    //   gsap.set(item, {
+    //     opacity: 0.4
+    //   })
+    //   gsap.timeline({
+    //     scrollTrigger: {
+    //       trigger: item,
+    //       start: 'center center',
+    //       end: 'top center',
+    //       toggleActions: 'play none reverse none'
+    //     }
+    //   }).to(item, {
+    //     opacity: 1,
+    //     duration: 0.8,
+    //     ease: 'ease'
+    //   })
 
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'center center',
-          end: 'top center',
-          toggleActions: 'play none reverse none'
-        }
-      }).to(arrowDown, {
-        y: item.offsetTop + item.children[1].offsetTop - 75,
-        duration: 0.8,
-        ease: 'ease'
-      })
-    })
+    //   gsap.timeline({
+    //     scrollTrigger: {
+    //       trigger: item,
+    //       start: 'center center',
+    //       end: 'top center',
+    //       toggleActions: 'play none reverse none'
+    //     }
+    //   }).to(arrowDown, {
+    //     y: item.offsetTop + item.children[1].offsetTop - 75,
+    //     duration: 0.8,
+    //     ease: 'ease'
+    //   })
+    // })
   }
 }
 </script>

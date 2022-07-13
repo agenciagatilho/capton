@@ -23,42 +23,42 @@ export default {
     }
   },
   mounted () {
-    const { gsap } = require('gsap')
-    const { ScrollTrigger } = require('gsap/ScrollTrigger')
-    gsap.registerPlugin(ScrollTrigger)
+    // const { gsap } = require('gsap')
+    // const { ScrollTrigger } = require('gsap/ScrollTrigger')
+    // gsap.registerPlugin(ScrollTrigger)
 
-    const items = gsap.utils.toArray('._about_us ._item')
-    const arrowMasked = document.querySelector('._about_us ._animated_arrow')
-    const arrowDown = document.querySelector('._about_us ._down_arrow')
+    // const items = gsap.utils.toArray('._about_us ._item')
+    // const arrowMasked = document.querySelector('._about_us ._animated_arrow')
+    // const arrowDown = document.querySelector('._about_us ._down_arrow')
 
-    items.forEach((item, index) => {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'center center',
-          end: 'top center',
-          toggleActions: 'play none reverse none'
-        }
-      }).to(arrowMasked, {
-        rotation: -90 * index,
-        y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
-        duration: 0.8,
-        ease: 'ease'
-      })
+    // items.forEach((item, index) => {
+    //   gsap.timeline({
+    //     scrollTrigger: {
+    //       trigger: item,
+    //       start: 'center center',
+    //       end: 'top center',
+    //       toggleActions: 'play none reverse none'
+    //     }
+    //   }).to(arrowMasked, {
+    //     rotation: -90 * index,
+    //     y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
+    //     duration: 0.8,
+    //     ease: 'ease'
+    //   })
 
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'center center',
-          end: 'top center',
-          toggleActions: 'play none reverse none'
-        }
-      }).to(arrowDown, {
-        y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
-        duration: 0.8,
-        ease: 'ease'
-      })
-    })
+    //   gsap.timeline({
+    //     scrollTrigger: {
+    //       trigger: item,
+    //       start: 'center center',
+    //       end: 'top center',
+    //       toggleActions: 'play none reverse none'
+    //     }
+    //   }).to(arrowDown, {
+    //     y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
+    //     duration: 0.8,
+    //     ease: 'ease'
+    //   })
+    // })
   }
 }
 </script>

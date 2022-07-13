@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: ' Viener | Distribuindo energia, gerando conexões.',
+    title: 'Capton Impulsionadora de Negócios',
     htmlAttrs: {
       lang: 'pt-br'
     },
@@ -17,21 +17,21 @@ export default {
       { 'http-equiv': 'Content-Language', content: 'pt-BR' },
 
       { name: 'robots', content: 'index,follow' },
-      { name: 'author', content: 'Viener' },
-      { name: 'copyright', content: 'Viener' },
+      { name: 'author', content: 'Gatilho' },
+      { name: 'copyright', content: 'Gatilho' },
 
-      { name: 'title', content: ' Viener | Distribuindo energia, gerando conexões.' },
-      { name: 'description', content: 'Trabalhamos com energias renováveis, levando às pessoas uma fonte inesgotável de benefícios e ajudando a construir um futuro melhor e mais sustentável.' },
+      { name: 'title', content: 'Capton Impulsionadora de Negócios' },
+      { name: 'description', content: 'A Capton é a primeira impulsionadora de negócios focada na ajuda e definição de processos e mentalidade. Venha navegar novos mares conosco.' },
 
       { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'https://viener.com.br/' },
-      { property: 'og:title', content: ' Viener | Distribuindo energia, gerando conexões.' },
-      { property: 'og:description', content: 'Trabalhamos com energias renováveis, levando às pessoas uma fonte inesgotável de benefícios e ajudando a construir um futuro melhor e mais sustentável.' },
+      { property: 'og:url', content: 'https://capton.com.br' },
+      { property: 'og:title', content: 'Capton Impulsionadora de Negócios' },
+      { property: 'og:description', content: 'A Capton é a primeira impulsionadora de negócios focada na ajuda e definição de processos e mentalidade. Venha navegar novos mares conosco.' },
 
       { property: 'twitter:card', content: 'summary_large_image' },
-      { property: 'twitter:url', content: 'https://viener.com.br/' },
-      { property: 'twitter:title', content: ' Viener | Distribuindo energia, gerando conexões.' },
-      { property: 'twitter:description', content: 'Trabalhamos com energias renováveis, levando às pessoas uma fonte inesgotável de benefícios e ajudando a construir um futuro melhor e mais sustentável.' }
+      { property: 'twitter:url', content: 'https://capton.com.br' },
+      { property: 'twitter:title', content: 'Capton Impulsionadora de Negócios' },
+      { property: 'twitter:description', content: 'A Capton é a primeira impulsionadora de negócios focada na ajuda e definição de processos e mentalidade. Venha navegar novos mares conosco.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }

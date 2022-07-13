@@ -35,10 +35,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
-    ],
-    script: [
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js' },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js' }
     ]
   },
   // Global CSS: https://go.nuxtjs.dev/config-css

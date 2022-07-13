@@ -1,23 +1,41 @@
-// eslint-disable-next-line no-empty-pattern
-export default function ({}, inject) {
-  const main = {
-    async send (data) {
-      const formdata = new FormData()
-      formdata.append('email', data.email)
-      formdata.append('name', data.name)
-      formdata.append('msg', data.msg)
-      formdata.append('subject', data.subject)
+export default function ({ $axios }, inject) {
+  const baseUrl = 'https://api.rd.services'
 
-      const requestOptions = {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formdata,
-        redirect: 'follow'
-      }
+  function params (data, auth = false) {
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    headers.append('Access-Control-Allow-Origin', '*')
 
-      const response = (await fetch('https://viener.com.br/sendEmail.php', requestOptions))
-      return response
+    return {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data)
     }
   }
-  inject('api', main)
+
+  const data = {
+    auth: 'api_key=' + process.env.RD_API_KEY,
+    conversion (data) {
+      return {
+        event_type: 'CONVERSION',
+        event_family: 'CDP',
+        payload: {
+          conversion_identifier: data.conversion_identifier,
+          traffic_source: window.location.pathname.split('utm_source')[1]?.split('&')[0] || 'organic',
+          traffic_medium: window.location.pathname.split('utm_medium')[1]?.split('&')[0] || '',
+          traffic_campaign: window.location.pathname.split('utm_campaign')[1]?.split('&')[0] || '',
+          traffic_value: window.location.pathname.split('utm_value')[1]?.split('&')[0] || 'organic',
+          ...data
+        }
+      }
+    }
+  }
+
+  const api = {
+    async send (item) {
+      return await fetch(baseUrl + '/platform/conversions?' + data.auth, params(data.conversion(item)))
+    }
+  }
+
+  inject('api', api)
 }

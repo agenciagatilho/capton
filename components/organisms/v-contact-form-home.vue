@@ -4,7 +4,7 @@
       <h2>{{ item.title }}</h2>
       <p>{{ item.description }}</p>
     </div>
-    <form id="form_contact_home">
+    <form id="form_contact_home" @submit="submit">
       <v-input :placeholder="item.form.name" id="name" :maxlength="100" />
       <v-input :placeholder="item.form.email" id="email" type="email" :maxlength="255" />
       <v-input :placeholder="item.form.city" id="city" :maxlength="100" />
@@ -23,6 +23,30 @@ export default {
     item: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    submit (e) {
+      e.preventDefault()
+      const form = e.target
+
+      const data = {
+        conversion_identifier: 'contato_home_capton',
+        name: form.name.value,
+        email: form.email.value,
+        city: form.city.value,
+        website: form.site.value,
+        cf_operating: form.operating.value
+      }
+
+      this.$api.send(data).then((res) => {
+        if (res.ok) {
+          this.$toast.set('Formulario enviado com sucesso!')
+          form.reset()
+        } else {
+          this.$toast.set(`Erro ao enviar o formulario! <br> código:(${res.status})/ tipo:${res.type}`)
+        }
+      })
     }
   }
 }

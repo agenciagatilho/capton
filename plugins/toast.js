@@ -4,7 +4,7 @@ export default function (_, inject) {
   const useToast = useToastStore()
 
   const main = {
-    set (message, options) {
+    set (message, options = {}) {
       const useOptions = {
         status: options?.time || 'sucess',
         time: options?.time || 3

@@ -1,6 +1,6 @@
 <template>
   <div class="_base_toast" :class="{'show': show}">
-    <p>{{ message }}</p>
+    <p v-html="message" />
     <div class="_menu_close" @click="close">
       <span />
       <span />

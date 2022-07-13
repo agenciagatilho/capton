@@ -2,32 +2,46 @@
   <div class="_footer">
     <v-container element="footer" id="footer">
       <div class="_top">
-        <nuxt-link to="/">
+        <component :is="isButton('/')" class="not _logo" to="/" @click="goToTop">
           <v-image src="logo_capton.svg" width="204px" height="31px" />
-        </nuxt-link>
+        </component>
 
         <menu>
-          <nuxt-link :to="sitemap.whoWeAre.url">
+          <component
+            :is="isButton(sitemap.whoWeAre.url)"
+            class="not"
+            :to="sitemap.whoWeAre.url"
+            @click="goTo(sitemap.whoWeAre.url)"
+          >
             {{ sitemap.whoWeAre.title }}
-          </nuxt-link>
-          <button class="not" @click="goTo(sitemap.investInGoodBusiness.url)">
-            {{ sitemap.investInGoodBusiness.title }}
-          </button>
-          <button class="not" @click="goTo(sitemap.methodology.url)">
+          </component>
+
+          <component
+            :is="isButton(sitemap.methodology.url)"
+            class="not"
+            :to="sitemap.methodology.url"
+            @click="goTo(sitemap.methodology.url)"
+          >
             {{ sitemap.methodology.title }}
-          </button>
-          <button class="not" @click="goTo(sitemap.contact.url)">
-            {{ sitemap.contact.title }}
-          </button>
-          <!-- <nuxt-link :to="sitemap.investInGoodBusiness.url">
+          </component>
+
+          <component
+            :is="isButton(sitemap.investInGoodBusiness.url)"
+            class="not"
+            :to="sitemap.investInGoodBusiness.url"
+            @click="goTo(sitemap.investInGoodBusiness.url)"
+          >
             {{ sitemap.investInGoodBusiness.title }}
-          </nuxt-link>
-          <nuxt-link :to="sitemap.methodology.url">
-            {{ sitemap.methodology.title }}
-          </nuxt-link>
-          <nuxt-link :to="sitemap.contact.url">
+          </component>
+
+          <component
+            :is="isButton(sitemap.contact.url)"
+            class="not"
+            :to="sitemap.contact.url"
+            @click="goTo(sitemap.contact.url)"
+          >
             {{ sitemap.contact.title }}
-          </nuxt-link> -->
+          </component>
         </menu>
 
         <div class="_footer_arrow_background">
@@ -51,11 +65,11 @@
       </div>
       <hr>
       <div class="_bottom">
-        <nuxt-link :to="sitemap.whoWeAre.url">
-          {{ sitemap.whoWeAre.title }}
+        <nuxt-link :to="sitemap.privacy.url">
+          {{ sitemap.privacy.title }}
         </nuxt-link>
-        <nuxt-link :to="sitemap.investInGoodBusiness.url">
-          {{ sitemap.investInGoodBusiness.title }}
+        <nuxt-link :to="sitemap.gatilho.url">
+          {{ sitemap.gatilho.title }}
         </nuxt-link>
       </div>
     </v-container>
@@ -73,19 +87,28 @@ export default {
     }
   },
   methods: {
+    isButton (page) {
+      const cleanPage = page.split('#')[0]
+      if (this.$route.path !== cleanPage && page.split('#')[0]) {
+        return 'nuxt-link'
+      }
+      return 'button'
+    },
     goTo (id) {
       const resolveId = id.split('#')
-      const element = document.getElementById(id.replace(resolveId[0] + '#', ''))
-
-      if (resolveId[0]) {
-        if (resolveId[0] !== this.$route.path) {
-          this.$router.push(id)
-        }
-      }
+      const element = document.getElementById(
+        id.replace(resolveId[0] + '#', '')
+      )
 
       scrollTo({
         behavior: 'smooth',
         top: element?.offsetTop
+      })
+    },
+    goToTop () {
+      scrollTo({
+        behavior: 'smooth',
+        top: 0
       })
     }
   }
@@ -102,6 +125,10 @@ export default {
 
       ._top{
         @apply grid grid-cols-4 pb-40px;
+
+        ._logo{
+          @apply h-max;
+        }
 
         menu{
           @apply flex flex-col gap-10px my-0 h-max;

@@ -40,7 +40,7 @@ export default {
       }).to(arrowMasked, {
         rotation: -90 * index,
         y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
-        duration: 0.8,
+        duration: 0.4,
         ease: 'ease'
       })
 
@@ -53,7 +53,7 @@ export default {
         }
       }).to(arrowDown, {
         y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
-        duration: 0.8,
+        duration: 0.6,
         ease: 'ease'
       })
     })

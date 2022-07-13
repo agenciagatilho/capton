@@ -47,7 +47,7 @@ export default {
         }
       }).to(item, {
         opacity: 1,
-        duration: 0.8,
+        duration: 0.4,
         ease: 'ease'
       })
 
@@ -60,7 +60,7 @@ export default {
         }
       }).to(arrowDown, {
         y: item.offsetTop + item.children[1].offsetTop - 75,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'ease'
       })
     })

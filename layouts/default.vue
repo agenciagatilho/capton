@@ -27,13 +27,13 @@ export default {
         const anim = gsap.fromTo(
           item,
           {
-            autoAlpha: 0.4,
-            y: -50
+            autoAlpha: 0.1,
+            y: -10
           },
           {
-            duration: 0.5,
+            duration: 0.2,
             autoAlpha: 1,
-            y: 1
+            y: 0
           }
         )
 

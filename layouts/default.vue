@@ -31,7 +31,7 @@ export default {
             y: -50
           },
           {
-            durantion: 0.5,
+            duration: 0.5,
             autoAlpha: 1,
             y: 1
           }

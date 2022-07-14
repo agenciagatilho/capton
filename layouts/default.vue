@@ -1,6 +1,7 @@
 <template>
   <div id="body">
     <v-header />
+    <v-mobile-menu />
     <Nuxt />
     <v-footer />
     <BaseToast />
@@ -8,13 +9,29 @@
 </template>
 
 <script>
+import { useMenuStore } from '~/store/menuState'
 export default {
   data () {
     return {
+      state: useMenuStore()
+    }
+  },
+  watch: {
+    $route (newVal, oldVal) {
+      if (newVal.name === 'politica-de-privacidade') {
+        this.state.fixedBG = true
+      } else {
+        this.state.fixedBG = false
+      }
     }
   },
   mounted () {
     this.startAnimation()
+    if (this.$route.name === 'politica-de-privacidade') {
+      this.state.fixedBG = true
+    } else {
+      this.state.fixedBG = false
+    }
   },
   methods: {
     startAnimation () {
@@ -60,7 +77,7 @@ export default {
 
   @media screen and (max-width: 768px) {
     #body{
-      @apply relative;
+      @apply relative gap-75px;
     }
   }
 </style>

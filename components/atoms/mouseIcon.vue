@@ -20,7 +20,7 @@ export default {
       }
       &:nth-child(2){
         @apply w-21px -mt-10px;
-          animation: mouseArrow 3s ease 0s infinite normal none;
+          animation: mouseArrow 2s ease infinite;
       }
     }
   }

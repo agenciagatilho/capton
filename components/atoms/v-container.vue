@@ -53,8 +53,17 @@ export default {
   }
 
   @media (max-width: 768px) {
-    .container{
-      @apply w-88vw;
+    .outer_container{
+      &.background_secondary{
+        @apply py-50px -mt-50px;
+      }
+
+      .container{
+        @apply px-15px max-w-400px mx-auto;
+      }
+      .container.small{
+        @apply max-w-300px;
+      }
     }
   }
 </style>

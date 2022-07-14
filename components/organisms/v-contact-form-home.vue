@@ -70,4 +70,24 @@ export default {
       }
     }
   }
+
+@media screen and (max-width: 768px) {
+  ._transform_my_business{
+    .container{
+      @apply grid-cols-1 gap-30px;
+
+      ._text{
+        @apply gap-20px;
+      }
+
+      #form_contact_home{
+        @apply gap-15px;
+
+        button{
+          @apply w-full;
+        }
+      }
+    }
+  }
+}
 </style>

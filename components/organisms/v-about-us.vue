@@ -8,9 +8,9 @@
       </li>
     </ul>
     <div class="_animated_arrow" />
-    <nuxt-link class="default_button" to="/">
+    <button @click="goTo('invista-em-bons-negocios', true)">
       {{ item.cta }}
-    </nuxt-link>
+    </button>
   </v-container>
 </template>
 
@@ -38,7 +38,7 @@ export default {
           toggleActions: 'play none reverse none'
         }
       }).to(arrowMasked, {
-        rotation: -90 * index,
+        rotation: -120 * index,
         y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
         duration: 0.4,
         ease: 'ease'
@@ -57,6 +57,22 @@ export default {
         ease: 'ease'
       })
     })
+  },
+  methods: {
+    goTo (id, center = false) {
+      const element = document.getElementById(id)
+      let position = 0
+
+      if (center) {
+        position = element?.offsetTop - 200
+      } else {
+        position = element?.offsetTop
+      }
+      scrollTo({
+        behavior: 'smooth',
+        top: position
+      })
+    }
   }
 }
 </script>
@@ -121,8 +137,67 @@ export default {
         -webkit-mask-size: contain;
       }
     }
-    .default_button{
+    button{
       @apply w-max mx-auto;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    ._about_us{
+      .container{
+        @apply gap-100px pt-50px;
+        ul{
+          @apply gap-50px;
+
+          ._item{
+            @apply gap-40px pl-30px;
+
+            h2{
+              @apply max-w-500px;
+            }
+            p{
+              @apply max-w-590px;
+            }
+
+            &:nth-child(1) h2{
+              @apply max-w-550px;
+            }
+            &:nth-child(2) p{
+              @apply max-w-630px;
+            }
+            &:nth-last-child(1){
+              h2{
+                @apply max-w-700px;
+              }
+              p{
+                @apply max-w-610px;
+              }
+            }
+
+            &::before{
+              content: '';
+              background: rgba(0, 63, 242, 0.5);
+              height: calc(100% + 150px);
+              @apply absolute left-0 top-0
+                      w-2px -mt-75px;
+            }
+          }
+        }
+
+        ._down_arrow{
+          @apply w-38px h-38px
+                absolute -left-17px top-162px z-1
+                bg-no-repeat bg-cover;
+          background-image: url('/images/arrow_down.png');
+        }
+
+        ._animated_arrow{
+          @apply hidden;
+        }
+      }
+      button{
+        @apply w-max mx-auto;
+      }
     }
   }
 </style>

@@ -64,7 +64,7 @@ export default {
     @apply h-full;
     ._inner{
       @apply p-40px overflow-hidden grid w-385px h-full gap-20px;
-      grid-template-rows: 10% 20% 50% 5%;
+      grid-template-rows: max-content max-content 1fr max-content;
       transition: all 0.3s ease-in-out;
 
       ._desc{
@@ -89,6 +89,24 @@ export default {
 
       &.only{
         grid-template-rows: 1fr 5%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    ._item_carousel_box{
+      @apply h-full;
+      ._inner{
+        @apply p-30px w-full h-full gap-20px;
+        grid-template-rows: 10% 10% 50% 5%;
+
+        svg{
+          @apply mx-auto;
+        }
+
+        &.only{
+          grid-template-rows: 1fr 5%;
+        }
       }
     }
   }

@@ -7,7 +7,7 @@
 <script>
 import VueSlickCarousel from 'vue-slick-carousel'
 import { useCarouselState } from '@/store/carouselState'
-import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+// import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
@@ -21,11 +21,23 @@ export default {
         dots: true,
         arrows: false,
         infinite: true,
-        speed: 300,
+        speed: 500,
         // focusOnSelect: true,
-        // slidesToShow: 1,
+        slidesToShow: 1,
         slidesToScroll: 1,
-        variableWidth: true
+        variableWidth: true,
+        autoplay: true,
+        autoplaySpeed: 2500,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              dots: false,
+              arrows: true,
+              variableWidth: false
+            }
+          }
+        ]
       })
     },
     name: {
@@ -50,9 +62,6 @@ export default {
     isShow () {
       return this.state[this.name]
     }
-  },
-  mounted () {
-    console.log(this.state[this.name], this.name)
   }
 }
 </script>
@@ -61,7 +70,7 @@ export default {
   ._v_carousel{
     .slick-track {
       @apply h-$close min-h-$close;
-      transition: all 0.3s ease-in;
+      transition: min-height 0.3s ease-in;
 
       >*{
         @apply bg-$primary;
@@ -97,6 +106,33 @@ export default {
           &::before{
             content: '';
           }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    ._v_carousel{
+      .slick-track {
+        @apply mb-50px;
+        min-height: calc(var(--close));
+        height: calc(var(--close));
+      }
+      &.show .slick-track{
+        min-height: calc(var(--open) * 0.8);
+      }
+
+      .slick-dots{
+        @apply hidden;
+      }
+      .slick-arrow {
+        @apply top-auto -bottom-0px p-0 bg-transparent;
+
+        &.slick-next{
+          @apply left-1/2 right-auto ml-10px;
+        }
+        &.slick-prev{
+          @apply right-1/2 left-auto mr-10px;
         }
       }
     }

@@ -1,8 +1,8 @@
 <template>
   <main id="home">
-    <v-banner :item="home.banner" cta="/" class="_banner_home" />
+    <v-banner :item="home.banner" class="_banner_home" cta="what_we_do" />
 
-    <v-what-we-do :item="home.whatWeDo" />
+    <v-what-we-do :item="home.whatWeDo" id="what_we_do"/>
 
     <v-boosting-people-transforming-businesses :item="home.boostingPeopleTransformingBusinesses" />
 
@@ -23,22 +23,22 @@
         />
       </v-carousel>
       <span class="container">
-        <nuxt-link class="default_button" to="/">
+        <button @click="goTo('metodologia')">
           {{ home.firstFocusBoost.cta }}
-        </nuxt-link>
+        </button>
       </span>
     </v-container>
 
-    <v-banner id="metodologia" class="_actions_transform_market" :item="home.actionsTransformMarket" cta="/" />
+    <v-banner id="metodologia" class="_actions_transform_market" :item="home.actionsTransformMarket" cta="about_us" goToCenter />
 
-    <v-about-us :item="home.aboutUs" />
+    <v-about-us id="about_us" :item="home.aboutUs" />
 
     <v-container id="invista-em-bons-negocios" nolimit class="_companies background_secondary">
       <v-carousel
         v-if="home.companies.items"
         class="_items"
         name="companies"
-        close-height="400px"
+        close-height="450px"
         open-height="500px"
         :style="`--list: 8;`"
       >
@@ -72,9 +72,9 @@
         />
       </v-carousel>
       <span class="container">
-        <nuxt-link class="default_button" to="/">
+        <button @click="goTo('contato', true)">
           {{ home.companies.cta }}
-        </nuxt-link>
+        </button>
       </span>
     </v-container>
 
@@ -107,6 +107,22 @@ export default {
     return {
       home
     }
+  },
+  methods: {
+    goTo (id, center = false) {
+      const element = document.getElementById(id)
+      let position = 0
+
+      if (center) {
+        position = element?.offsetTop - 200
+      } else {
+        position = element?.offsetTop
+      }
+      scrollTo({
+        behavior: 'smooth',
+        top: position
+      })
+    }
   }
 }
 </script>
@@ -131,7 +147,7 @@ export default {
         >.container{
           @apply flex items-center;
 
-          .default_button{
+          button{
             @apply w-max mx-auto mt-40px;
           }
         }
@@ -150,11 +166,14 @@ export default {
         ._item_carousel_box{
           @apply max-w-385px text-16px;
           line-height: 24px;
+          ._inner{
+            @apply pt-60px;
+          }
         }
 
         .container{
           @apply w-full flex;
-          .default_button{
+          button{
             @apply w-max mx-auto mt-40px;
           }
         }
@@ -200,6 +219,96 @@ export default {
           }
           p:nth-child(2) {
             @apply pl-50px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #home{
+      @apply gap-50px text-center;
+
+      ._banner_home{
+        background-image: url('/images/background_banner.gif');
+        @apply mt-0px;
+      }
+
+      ._first_focus_boost{
+        ._item_carousel_box{
+          @apply max-w-385px;
+        }
+        >*{
+          @apply gap-30px;
+
+          >.container{
+
+            .default_button{
+              @apply mt-30px;
+            }
+          }
+        }
+      }
+
+      ._companies{
+        >*{
+          @apply gap-15px;
+
+          ._item_carousel_box{
+            @apply max-w-full;
+          }
+
+          .container{
+            @apply w-full flex;
+            button{
+              @apply w-max mx-auto mt-0px;
+            }
+          }
+        }
+        .slick-track {
+          >*{
+            &:nth-child(2n){
+              background-color: #EFF6FF;
+            }
+          }
+        }
+      }
+
+      ._investors_challenger{
+        .container{
+          @apply grid-cols-1 gap-30px;
+
+          ._text{
+            @apply gap-15px max-w-full;
+
+            h2{
+              @apply max-w-full;
+            }
+
+            a{
+              @apply w-full;
+            }
+          }
+        }
+      }
+
+      ._capton_club{
+        .container{
+          @apply pt-30px pb-30px px-20px
+                 flex flex-col gap-30px
+                 mx-15px
+                 rounded-30px;
+          width: calc(100% - 30px);
+
+          ._text{
+            @apply grid grid-cols-1 gap-30px;
+
+            p:nth-child(1) {
+              @apply pr-0px;
+            }
+            p:nth-child(2) {
+              @apply pl-0px;
+            }
           }
         }
       }

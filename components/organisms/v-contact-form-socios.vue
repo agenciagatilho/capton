@@ -1,5 +1,5 @@
 <template>
-  <v-container class="_transform_my_business">
+  <v-container class="_vision_beyound">
     <div class="_text">
       <h2>{{ item.title }}</h2>
       <p>{{ item.description }}</p>
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss">
-  ._transform_my_business{
+  ._vision_beyound{
     .container{
       @apply grid grid-cols-2 gap-100px;
 

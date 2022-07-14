@@ -1,7 +1,7 @@
 <template>
   <v-container class="_what_we_do background_secondary">
     <h2>{{ item.title }}</h2>
-    <span class="_items">
+    <component :is="mobileElement" class="_items" :bind="settings">
       <div class="_box">
         <v-image src="icons/investment.svg" width="40px" height="42px" />
         <h3>{{ item.items.investment.title }}</h3>
@@ -17,16 +17,39 @@
         <h3>{{ item.items.boost.title }}</h3>
         <p v-html="item.items.boost.description" />
       </div>
-    </span>
+    </component>
   </v-container>
 </template>
 
 <script>
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
+  components: {
+    VueSlickCarousel
+  },
   props: {
     item: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      settings: {
+        dots: false,
+        arrows: true,
+        infinite: true,
+        speed: 300,
+        slidesToScroll: 1,
+        slidesToShow: 1
+      }
+    }
+  },
+  computed: {
+    mobileElement () {
+      return this.$device.isDesktop ? 'span' : 'VueSlickCarousel'
     }
   }
 }
@@ -40,7 +63,7 @@ export default {
               items-center;
 
       ._items{
-        @apply flex;
+        @apply grid grid-cols-3;
 
         ._box{
           @apply flex flex-col gap-20px
@@ -53,6 +76,65 @@ export default {
 
           &:hover{
             @apply bg-$primary;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    ._what_we_do{
+      .container{
+        @apply block text-center gap-30px;
+
+        h2{
+          @apply mb-30px;
+        }
+
+        ._items{
+          @apply;
+
+          .slick-slide{
+            @apply h-full;
+            >div{
+              @apply h-100vw max-h-400px;
+
+              ._box{
+                @apply p-25px h-full text-center;
+                transition: all 0.2s ease-in-out;
+
+                >*{
+                  @apply mb-20px mx-auto;
+                }
+
+                p{
+                  @apply mt-6px;
+                }
+
+                &:hover{
+                  @apply bg-$bg;
+                }
+              }
+            }
+
+            &.slick-active{
+               >div{
+                ._box{
+                  @apply bg-$primary;
+                }
+               }
+            }
+          }
+        }
+
+        .slick-arrow {
+          @apply top-auto -bottom-50px p-0 bg-transparent;
+
+          &.slick-next{
+            @apply left-1/2 right-auto ml-10px;
+          }
+          &.slick-prev{
+            @apply right-1/2 left-auto mr-10px;
           }
         }
       }

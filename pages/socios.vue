@@ -59,7 +59,7 @@ export default {
           toggleActions: 'play none reverse none'
         }
       }).to(arrowDown, {
-        y: item.offsetTop + item.children[1].offsetTop - 75,
+        y: item.offsetTop + item.children[1].offsetTop - 60,
         duration: 0.5,
         ease: 'ease'
       })
@@ -73,7 +73,7 @@ export default {
     @apply flex flex-col gap-75px;
 
     ._banner_socios{
-      background-image: url('/images/background_banner.gif');
+      background-image: url('/images/background_socios.png');
       @apply mt-0px;
       h1{
         @apply max-w-635px;
@@ -81,13 +81,14 @@ export default {
     }
 
     ._partners{
+      @apply pb-75px;
       .container{
         @apply relative flex flex-col gap-150px pt-75px;
         ul{
-          @apply flex flex-col gap-75px;
+          @apply flex flex-col gap-120px;
 
           ._item{
-            @apply flex gap-60px pl-65px relative;
+            @apply flex gap-70px pl-100px relative;
 
             &:nth-child(1){
               opacity: 1 !important;
@@ -100,7 +101,7 @@ export default {
             }
 
             ._text{
-              @apply flex flex-col gap-0px;
+              @apply flex flex-col gap-8px;
               h2{
                 @apply max-w-600px font-bold;
               }
@@ -122,7 +123,7 @@ export default {
               content: '';
               background: rgba(0, 63, 242, 0.5);
               height: calc(100% + 150px);
-              @apply absolute left-0 top-0
+              @apply absolute left-18px top-0
                       w-2px -mt-75px;
             }
           }
@@ -130,11 +131,17 @@ export default {
 
         ._down_arrow{
           @apply w-38px h-38px
-                absolute -left-17px top-162px
+                absolute -left-0px top-162px z-2
                 bg-no-repeat bg-cover;
           background-image: url('/images/arrow_down.png');
         }
       }
+    }
+
+    #contato{
+     >*{
+       @apply px-100px;
+     }
     }
   }
 </style>

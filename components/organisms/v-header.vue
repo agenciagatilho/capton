@@ -1,9 +1,11 @@
 <template>
-  <v-container id="header" element="header">
+  <v-container id="header" element="header" :class="{'fixedBackground': state.fixedBG}">
     <span class="_inner">
       <component :is="isButton('/')" class="not" to="/" @click="goToTop">
         <v-image src="logo_capton.svg" width="145px" height="22px" />
       </component>
+
+      <v-menu-button />
 
       <menu>
         <component
@@ -48,12 +50,14 @@
 
 <script>
 import sitemap from '@/data/sitemap.json'
+import { useMenuStore } from '~/store/menuState'
 export default {
   data () {
     return {
       sitemap,
       currentPosition: 0,
-      timestamp: 0
+      timestamp: 0,
+      state: useMenuStore()
     }
   },
   mounted () {
@@ -63,12 +67,6 @@ export default {
           document.querySelector('#header').classList.add('offTop')
         } else {
           document.querySelector('#header').classList.remove('offTop')
-        }
-
-        if (window.scrollY > this.currentPosition) {
-          document.querySelector('#header').classList.add('scrollBottom')
-        } else {
-          document.querySelector('#header').classList.remove('scrollBottom')
         }
 
         this.timeStamp = e.timeStamp
@@ -109,6 +107,15 @@ export default {
   #header{
     @apply fixed w-full h-70px text-16px text-$text-light z-998 transform;
     transition: all 0.2s ease-in-out;
+
+    &::before{
+      content: '';
+      background-image: url('/images/background_header.gif');
+      transition: all 0.2s ease-in-out;
+      @apply absolute w-full h-full top-0 left-0 -z-1 opacity-0
+             bg-no-repeat bg-center bg-cover;
+    }
+
     .container{
       @apply relative w-full h-full;
       ._inner{
@@ -127,15 +134,40 @@ export default {
           }
         }
       }
+
+      ._menu_button{
+        span{
+          @apply bg-$text-light;
+        }
+      }
     }
 
-    &.scrollBottom{
-      @apply -translate-y-1/1;
-
+    &.offTop:not(.scrollBottom),
+    &.fixedBackground{
+      &::before{
+        @apply opacity-100;
+      }
     }
-    &.offTop:not(.scrollBottom){
-      background: #d3e1eb2e;
-    }
+  }
 
+  @media screen and (max-width: 768px) {
+    #header{
+      .container{
+        ._inner{
+          @apply w-full justify-between relative;
+          menu{
+            @apply hidden;
+          }
+        }
+      }
+
+      &.scrollBottom{
+        @apply -translate-y-1/1;
+
+      }
+      &.offTop:not(.scrollBottom){
+        background: #d3e1eb2e;
+      }
+    }
   }
 </style>

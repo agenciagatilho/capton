@@ -162,4 +162,44 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    ._footer{
+      @apply pt-0px -mt-0px text-center;
+      #footer{
+        ._top{
+          @apply grid-cols-1 justify-items-center gap-30px pb-40px;
+
+          ._logo{
+          }
+
+          menu{
+            @apply gap-10px p-0;
+
+            a,button{
+              @apply text-center;
+            }
+          }
+
+          ._footer_arrow_background{
+            @apply hidden;
+          }
+
+          ._social_media{
+            @apply mx-auto gap-20px;
+            span{
+              @apply flex gap-20px;
+            }
+          }
+
+        }
+        hr{
+          @apply border-t-white;
+        }
+        ._bottom{
+          @apply flex-col gap-20px pt-20px;
+        }
+      }
+    }
+  }
 </style>

@@ -53,7 +53,7 @@ export default {
   plugins: [
     { src: '~/plugins/sendEmail.js', mode: 'client' },
     { src: '~/plugins/getCities.js', mode: 'client' },
-    { src: '~/plugins/pinia.js', mode: 'client' },
+    { src: '~/plugins/pinia.js' },
     { src: '~/plugins/toast.js', mode: 'client' },
     { src: '~/plugins/gsap.js', mode: 'client' }
   ],

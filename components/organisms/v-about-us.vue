@@ -22,39 +22,79 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      boxSize: 0
+    }
+  },
   mounted () {
     const gsap = this.$gsap.base
+    const ScrollTrigger = this.$gsap.ScrollTrigger
 
     const items = gsap.utils.toArray('._about_us ._item')
     const arrowMasked = document.querySelector('._about_us ._animated_arrow')
     const arrowDown = document.querySelector('._about_us ._down_arrow')
+    const boxTrigger = document.querySelector('._about_us ul')
 
     items.forEach((item, index) => {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'center center',
-          end: 'center center',
-          toggleActions: 'play none reverse none'
+      const animOpacity = gsap.fromTo(item,
+        {
+          opacity: 0.4,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1
         }
-      }).to(arrowMasked, {
-        rotation: -120 * index,
-        y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
-        duration: 0.4,
-        ease: 'ease'
-      })
+      )
 
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'center center',
-          end: 'top center',
-          toggleActions: 'play none reverse none'
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top center',
+        end: 'bottom center',
+        toggleActions: 'play none reverse none',
+        animation: animOpacity
+      })
+    })
+
+    window.addEventListener('scroll', () => {
+      ScrollTrigger.create({
+        trigger: boxTrigger,
+        start: 'top center',
+        end: 'bottom center',
+        toggleActions: 'play none reverse none',
+        onEnter: (self) => {
+          this.boxSize = self.end - self.start
+
+          gsap.to(
+            arrowDown,
+            {
+              y: ((self.end - self.start) - 240) * self.progress,
+              duration: 1,
+              ease: 'ease'
+            }
+          )
+          gsap.to(
+            arrowMasked,
+            {
+              y: ((self.end - self.start) - 270) * self.progress,
+              duration: 0,
+              origin: 'center',
+              ease: 'linear'
+            }
+          )
+
+          gsap.to(
+            arrowMasked,
+            {
+              rotation: ((360 * 3) * self.progress),
+              duration: 1,
+              origin: 'center',
+              ease: 'ease'
+            }
+          )
         }
-      }).to(arrowDown, {
-        y: item.offsetTop + item.children[1].offsetTop - 75 - 50 - 82,
-        duration: 0.6,
-        ease: 'ease'
       })
     })
   },
@@ -79,13 +119,17 @@ export default {
 
 <style lang="scss">
   ._about_us{
+    scroll-snap-type: y mandatory;
     .container{
       @apply relative flex flex-col gap-150px pt-75px;
       ul{
         @apply flex flex-col gap-75px;
 
         ._item{
-          @apply flex flex-col gap-40px pl-65px relative;
+          @apply flex flex-col gap-40px justify-center
+                 pl-65px relative
+                 min-h-300px;
+          scroll-snap-align: top;
 
           h2{
             @apply max-w-500px;
@@ -94,8 +138,12 @@ export default {
             @apply max-w-590px;
           }
 
-          &:nth-child(1) h2{
-            @apply max-w-550px;
+          &:nth-child(1) {
+            opacity: 1 !important;
+            transform: none !important;
+            h2{
+              @apply max-w-550px;
+            }
           }
           &:nth-child(2) p{
             @apply max-w-630px;
@@ -121,14 +169,14 @@ export default {
 
       ._down_arrow{
         @apply w-38px h-38px
-              absolute -left-17px top-162px z-1
+              absolute -left-17px top-168px z-1
               bg-no-repeat bg-cover;
         background-image: url('/images/arrow_down.png');
       }
 
       ._animated_arrow{
         @apply w-200px h-200px mr-110px
-              absolute right-0 top-82px z-1
+              absolute right-0 top-90px z-1
               bg-no-repeat bg-cover;
         background-image: url('/images/masked_arrow_background.gif');
         mask: no-repeat center url('/images/masked_arrow_mask.png');
@@ -178,7 +226,7 @@ export default {
               content: '';
               background: rgba(0, 63, 242, 0.5);
               height: calc(100% + 150px);
-              @apply absolute left-0 top-0
+              @apply absolute left-0 top-168px
                       w-2px -mt-75px;
             }
           }
@@ -186,7 +234,7 @@ export default {
 
         ._down_arrow{
           @apply w-38px h-38px
-                absolute -left-17px top-162px z-1
+                absolute -left-17px top-168px z-1
                 bg-no-repeat bg-cover;
           background-image: url('/images/arrow_down.png');
         }

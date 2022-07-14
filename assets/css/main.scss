@@ -16,10 +16,14 @@ html {
   line-height: 26px;
   color: var(--text);
   overflow-x: hidden;
+
+  &::-webkit-scrollbar{
+    @apply hidden;
+  }
 }
 * {
   outline: none;
-  scroll-behavior: smooth;
+  // scroll-behavior: smooth;
 }
 
 h1 {

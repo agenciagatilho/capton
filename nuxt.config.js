@@ -1,12 +1,12 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  runtimeCompiler: true,
-  resolve: {
-    alias: {
-      vue: 'vue/dist/vue.js'
-    }
-  },
+  // runtimeCompiler: true,
+  // resolve: {
+  //   alias: {
+  //     vue: 'vue/dist/vue.js'
+  //   }
+  // },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {

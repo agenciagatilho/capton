@@ -15,6 +15,7 @@
           </div>
         </li>
       </ul>
+      <div class="_animated_arrow" />
     </v-container>
     <v-contact-form-socios id="contato" :item="socios.visionBeyound" />
   </main>
@@ -30,38 +31,71 @@ export default {
   },
   mounted () {
     const gsap = this.$gsap.base
+    const ScrollTrigger = this.$gsap.ScrollTrigger
 
     const items = gsap.utils.toArray('._partners ._item')
     const arrowDown = document.querySelector('._partners ._down_arrow')
+    const arrowMasked = document.querySelector('._partners ._animated_arrow')
+    const boxTrigger = document.querySelector('._partners ul')
 
     items.forEach((item, index) => {
-      gsap.set(item, {
-        opacity: 0.4
-      })
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'center center',
-          end: 'top center',
-          toggleActions: 'play none reverse none'
+      const animOpacity = gsap.fromTo(item,
+        {
+          opacity: 0.4,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1
         }
-      }).to(item, {
-        opacity: 1,
-        duration: 0.4,
-        ease: 'ease'
-      })
+      )
 
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'center center',
-          end: 'top center',
-          toggleActions: 'play none reverse none'
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top center',
+        end: 'bottom center',
+        toggleActions: 'play none reverse none',
+        animation: animOpacity
+      })
+    })
+
+    window.addEventListener('scroll', () => {
+      ScrollTrigger.create({
+        trigger: boxTrigger,
+        start: 'top center',
+        end: 'bottom center',
+        toggleActions: 'play none reverse none',
+        onEnter: (self) => {
+          this.boxSize = self.end - self.start
+
+          gsap.to(
+            arrowDown,
+            {
+              y: ((self.end - self.start) - 240) * self.progress,
+              duration: 1,
+              ease: 'ease'
+            }
+          )
+          gsap.to(
+            arrowMasked,
+            {
+              y: ((self.end - self.start) - 270) * self.progress,
+              duration: 0,
+              origin: 'center',
+              ease: 'linear'
+            }
+          )
+          gsap.to(
+            arrowMasked,
+            {
+              rotation: (360 * 4) * self.progress,
+              duration: 1,
+              origin: 'center',
+              ease: 'ease'
+            }
+          )
         }
-      }).to(arrowDown, {
-        y: item.offsetTop + item.children[1].offsetTop - 60,
-        duration: 0.5,
-        ease: 'ease'
       })
     })
   }
@@ -92,6 +126,7 @@ export default {
 
             &:nth-child(1){
               opacity: 1 !important;
+              transform: none !important;
             }
 
             ._img{
@@ -131,9 +166,19 @@ export default {
 
         ._down_arrow{
           @apply w-38px h-38px
-                absolute -left-0px top-162px z-2
+                absolute -left-0px top-180px z-2
                 bg-no-repeat bg-cover;
           background-image: url('/images/arrow_down.png');
+        }
+        ._animated_arrow{
+          @apply w-100px h-100px mr-10px
+                absolute right-0 top-140px z-1
+                bg-no-repeat bg-cover;
+          background-image: url('/images/masked_arrow_background.gif');
+          mask: no-repeat center url('/images/masked_arrow_mask.png');
+          -webkit-mask: no-repeat center url('/images/masked_arrow_mask.png');
+          mask-size: contain;
+          -webkit-mask-size: contain;
         }
       }
     }

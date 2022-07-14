@@ -70,6 +70,13 @@
           :resume="home.companies.items.investee.resume"
           name="companies"
         />
+        <item-carousel
+          :image="{src: 'icons/investors_committee.svg', width: '40px', height: '40px'}"
+          :title="home.companies.items.investorsCommittee.title"
+          :description="home.companies.items.investorsCommittee.description"
+          :resume="home.companies.items.investorsCommittee.resume"
+          name="companies"
+        />
       </v-carousel>
       <span class="container">
         <button @click="goTo('contato', true)">

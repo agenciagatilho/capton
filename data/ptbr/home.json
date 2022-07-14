@@ -54,6 +54,12 @@
 
       {
         "full": "Acreditamos que as pessoas são a base dos negócios. Com isso, conectamos pessoas para descobrir talentos, multiplicar negócios e resolver problemas."
+      },
+      {
+        "full": "Investimos em empresas, não somente com dinheiro, mas, principalmente, com experiência, ideias e visão de mercado. Dessa forma, impulsionamos e criamos negócios."
+      },
+      {
+        "full": " Oportunidades surgem todos os dias, assim como ideias promissoras para negócios inovadores. Nós ajudamos essas ideias a se concretizarem e a prosperarem."
       }
     ],
     "cta": "Ative conexões agora"
@@ -102,6 +108,11 @@
       "investee": {
         "title": "Empresas investidas",
         "description": "Esse grupo é formado por empresas que se cadastraram no site e foram reconhecidas como aptas a passar direto para a fase de investimento ou empresas que já passaram por todo o funil. Essas empresas receberam investimento da Capton para desenvolvimento."
+      },
+      "investorsCommittee": {
+        "title": "Comitê e investidores",
+        "description": "Nosso comitê é formado pelos sócios da Capton, responsáveis pela execução dos processos juntos às impulsionadas e por tirar as ideias do papel, identificar a melhor forma de investir o dinheiro e captar novos investidores.<br> O grupo de investidores da Capton recebe cinco novos integrantes a cada 6 meses. Os membros desse grupo pagam um valor mensal para acompanhar tudo que está acontecendo nos processos que formam o funil.",
+        "resume": "Nosso comitê é formado pelos sócios da Capton, responsáveis pela execução dos processos juntos às impulsionadas e por tirar as ideias do papel, identificar a melhor forma de investir o dinheiro e captar novos investidores."
       }
     },
     "cta": "Fale conosco"

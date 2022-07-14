@@ -21,13 +21,13 @@ export default {
         dots: true,
         arrows: false,
         infinite: true,
-        speed: 500,
+        speed: 5000,
         // focusOnSelect: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         variableWidth: true,
         autoplay: true,
-        autoplaySpeed: 2500,
+        autoplaySpeed: 0,
         responsive: [
           {
             breakpoint: 768,

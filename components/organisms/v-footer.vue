@@ -51,15 +51,15 @@
         <div class="_social_media">
           <p>{{ medias.title }}</p>
           <span>
-            <nuxt-link :to="medias.facebook">
+            <a :href="medias.facebook">
               <v-image src="icons/facebook.svg" width="16px" height="23px" />
-            </nuxt-link>
-            <nuxt-link :to="medias.linkedin">
+            </a>
+            <a :href="medias.linkedin">
               <v-image src="icons/linkedin.svg" width="23px" height="21px" />
-            </nuxt-link>
-            <nuxt-link :to="medias.instagram">
+            </a>
+            <a :href="medias.instagram">
               <v-image src="icons/instagram.svg" width="22px" height="26px" />
-            </nuxt-link>
+            </a>
           </span>
         </div>
       </div>
@@ -68,9 +68,9 @@
         <nuxt-link :to="sitemap.privacy.url">
           {{ sitemap.privacy.title }}
         </nuxt-link>
-        <nuxt-link :to="sitemap.gatilho.url">
+        <a :href="sitemap.gatilho.url">
           {{ sitemap.gatilho.title }}
-        </nuxt-link>
+        </a>
       </div>
     </v-container>
   </div>

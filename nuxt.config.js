@@ -1,12 +1,12 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  // runtimeCompiler: true,
-  // resolve: {
-  //   alias: {
-  //     vue: 'vue/dist/vue.js'
-  //   }
-  // },
+  runtimeCompiler: true,
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -53,7 +53,7 @@ export default {
   plugins: [
     { src: '~/plugins/sendEmail.js', mode: 'client' },
     { src: '~/plugins/getCities.js', mode: 'client' },
-    { src: '~/plugins/pinia.js' },
+    { src: '~/plugins/pinia.js', mode: 'client' },
     { src: '~/plugins/toast.js', mode: 'client' },
     { src: '~/plugins/gsap.js', mode: 'client' }
   ],

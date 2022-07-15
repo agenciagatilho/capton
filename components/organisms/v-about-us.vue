@@ -1,13 +1,15 @@
 <template>
   <v-container class="_about_us">
-    <div class="_down_arrow" />
-    <ul>
-      <li v-for="(item, index) in item.items" :key="'about_us_'+index" class="_item">
-        <h2>{{ index + 1 }}. {{ item.title }}</h2>
-        <p>{{ item.description }}</p>
-      </li>
-    </ul>
-    <div class="_animated_arrow" />
+    <span>
+      <div class="_down_arrow" />
+      <ul>
+        <li v-for="(item, index) in item.items" :key="'about_us_'+index" class="_item">
+          <h2>{{ index + 1 }}. {{ item.title }}</h2>
+          <p>{{ item.description }}</p>
+        </li>
+      </ul>
+      <div class="_animated_arrow" />
+    </span>
     <button @click="goTo('invista-em-bons-negocios', true)">
       {{ item.cta }}
     </button>
@@ -33,8 +35,7 @@ export default {
 
     const items = gsap.utils.toArray('._about_us ._item')
     const arrowMasked = document.querySelector('._about_us ._animated_arrow')
-    const arrowDown = document.querySelector('._about_us ._down_arrow')
-    const boxTrigger = document.querySelector('._about_us ul')
+    const boxTrigger = document.querySelector('._about_us')
 
     items.forEach((item, index) => {
       const animOpacity = gsap.fromTo(item,
@@ -61,36 +62,17 @@ export default {
     window.addEventListener('scroll', () => {
       ScrollTrigger.create({
         trigger: boxTrigger,
-        start: 'top center',
-        end: 'bottom center',
-        toggleActions: 'play none reverse none',
+        start: 'top top',
+        end: 'bottom bottom',
+        toggleActions: 'restart none reverse none',
         onEnter: (self) => {
           this.boxSize = self.end - self.start
-
-          gsap.to(
-            arrowDown,
-            {
-              y: ((self.end - self.start) - 240) * self.progress,
-              duration: 1,
-              ease: 'ease'
-            }
-          )
-          gsap.to(
-            arrowMasked,
-            {
-              y: ((self.end - self.start) - 270) * self.progress,
-              duration: 0,
-              origin: 'center',
-              ease: 'linear'
-            }
-          )
 
           gsap.to(
             arrowMasked,
             {
               rotation: ((360 * 3) * self.progress),
-              duration: 1,
-              origin: 'center',
+              duration: 0.2,
               ease: 'ease'
             }
           )
@@ -122,6 +104,9 @@ export default {
     scroll-snap-type: y mandatory;
     .container{
       @apply relative flex flex-col gap-150px pt-75px;
+      >span{
+        @apply flex;
+      }
       ul{
         @apply flex flex-col gap-75px;
 
@@ -169,14 +154,14 @@ export default {
 
       ._down_arrow{
         @apply w-38px h-38px
-              absolute -left-17px top-168px z-1
+              sticky -mr-21px mt-100px top-1/3 z-1
               bg-no-repeat bg-cover;
         background-image: url('/images/arrow_down.png');
       }
 
       ._animated_arrow{
-        @apply w-200px h-200px mr-110px
-              absolute right-0 top-90px z-1
+        @apply w-200px h-200px mt-70px mr-110px
+              sticky right-0 top-1/4 z-1
               bg-no-repeat bg-cover;
         background-image: url('/images/masked_arrow_background.gif');
         mask: no-repeat center url('/images/masked_arrow_mask.png');

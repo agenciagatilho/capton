@@ -34,7 +34,7 @@ export default {
     const ScrollTrigger = this.$gsap.ScrollTrigger
 
     const items = gsap.utils.toArray('._partners ._item')
-    const arrowDown = document.querySelector('._partners ._down_arrow')
+    // const arrowDown = document.querySelector('._partners ._down_arrow')
     const arrowMasked = document.querySelector('._partners ._animated_arrow')
     const boxTrigger = document.querySelector('._partners ul')
 
@@ -63,35 +63,17 @@ export default {
     window.addEventListener('scroll', () => {
       ScrollTrigger.create({
         trigger: boxTrigger,
-        start: 'top center',
+        start: 'top top',
         end: 'bottom center',
         toggleActions: 'play none reverse none',
         onEnter: (self) => {
           this.boxSize = self.end - self.start
 
           gsap.to(
-            arrowDown,
-            {
-              y: ((self.end - self.start) - 240) * self.progress,
-              duration: 1,
-              ease: 'ease'
-            }
-          )
-          gsap.to(
-            arrowMasked,
-            {
-              y: ((self.end - self.start) - 270) * self.progress,
-              duration: 0,
-              origin: 'center',
-              ease: 'linear'
-            }
-          )
-          gsap.to(
             arrowMasked,
             {
               rotation: (360 * 4) * self.progress,
-              duration: 1,
-              origin: 'center',
+              duration: 0.2,
               ease: 'ease'
             }
           )
@@ -117,7 +99,7 @@ export default {
     ._partners{
       @apply pb-75px;
       .container{
-        @apply relative flex flex-col gap-150px pt-75px;
+        @apply relative flex gap-0px pt-75px;
         ul{
           @apply flex flex-col gap-120px;
 
@@ -166,13 +148,13 @@ export default {
 
         ._down_arrow{
           @apply w-38px h-38px
-                absolute -left-0px top-180px z-2
+                sticky mt-80px -mr-38px top-180px z-2
                 bg-no-repeat bg-cover;
           background-image: url('/images/arrow_down.png');
         }
         ._animated_arrow{
-          @apply w-100px h-100px mr-10px
-                absolute right-0 top-140px z-1
+          @apply w-100px h-100px mr-10px mt-40px ml-auto
+                sticky right-0 top-150px z-1
                 bg-no-repeat bg-cover;
           background-image: url('/images/masked_arrow_background.gif');
           mask: no-repeat center url('/images/masked_arrow_mask.png');

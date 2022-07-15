@@ -21,13 +21,17 @@ export default {
         dots: true,
         arrows: false,
         infinite: true,
-        speed: 5000,
+        speed: 6000,
         // focusOnSelect: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         variableWidth: true,
         autoplay: true,
         autoplaySpeed: 0,
+        cssEase: 'linear',
+        pauseOnDotsHover: true,
+        pauseOnFocus: true,
+        pauseOnHover: true,
         responsive: [
           {
             breakpoint: 768,

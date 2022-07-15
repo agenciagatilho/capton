@@ -73,9 +73,7 @@
       <div class="_text">
         <h2>{{ home.investorsChallenger.title }}</h2>
         <p v-html="home.investorsChallenger.description" />
-        <nuxt-link to="/" class="default_button">
-          {{ home.investorsChallenger.cta }}
-        </nuxt-link>
+        <v-hidden-form :cta="home.investorsChallenger.cta" />
       </div>
     </v-container>
 
@@ -185,10 +183,6 @@ export default {
 
           h2{
             @apply max-w-425px;
-          }
-
-          a{
-            @apply w-max;
           }
         }
       }

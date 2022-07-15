@@ -1,8 +1,8 @@
 <template>
   <div
     class="_clicker"
-    @mouseenter="()=>{if($device.isDesktop) {pauseCarousel}}"
-    @mouseleave="()=>{if($device.isDesktop) {playCarousel}}"
+    @mouseenter="()=>{if($device.isDesktop) {pauseCarousel()}}"
+    @mouseleave="()=>{if($device.isDesktop) {playCarousel()}}"
   >
     <VueSlickCarousel
       v-bind="settings"
@@ -80,6 +80,7 @@ export default {
   },
   methods: {
     pauseCarousel () {
+      console.log('enter')
       this.$refs.v_carousel.pause()
       const track = this.$refs.v_carousel.$el.querySelector('.slick-track')
       let translateTrack = getComputedStyle(track)
@@ -96,7 +97,8 @@ export default {
       this.$refs.v_carousel.$el.querySelector('.slick-list').style = translateTrack
       track.classList.add('paused')
     },
-    playCarousel (e) {
+    playCarousel () {
+      console.log('exit')
       const track = this.$refs.v_carousel.$el.querySelector('.slick-track')
       track.classList.remove('paused')
       track.classList.add('resume')

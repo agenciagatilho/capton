@@ -53,7 +53,7 @@ export default {
         animation: anim,
         start: 'top center',
         end: 'bottom center',
-        toggleActions: 'play reverse reverse reverse'
+        toggleActions: 'restart none restart none'
       })
     } else {
       anim.play()
@@ -62,7 +62,7 @@ export default {
         trigger: this.$refs.this_banner.$el,
         animation: anim,
         start: 'top top',
-        toggleActions: 'play reverse reverse restart'
+        toggleActions: 'restart reverse reverse restart'
       })
     }
   },

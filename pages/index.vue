@@ -2,7 +2,7 @@
   <main id="home">
     <v-banner :item="home.banner" class="_banner_home" cta="what_we_do" />
 
-    <v-what-we-do :item="home.whatWeDo" id="what_we_do"/>
+    <v-what-we-do id="what_we_do" :item="home.whatWeDo" />
 
     <v-boosting-people-transforming-businesses :item="home.boostingPeopleTransformingBusinesses" />
 
@@ -12,29 +12,35 @@
           {{ home.firstFocusBoost.title }}
         </h2>
       </span>
-      <v-carousel v-if="home.firstFocusBoost.items" class="_items" name="firstFocusBoost" :style="`--list: ${home.firstFocusBoost.items.length * 2};`">
+      <v-new-carousel
+        v-if="home.firstFocusBoost.items"
+        class="_items"
+        name="firstFocusBoost"
+        :style="`--list: ${home.firstFocusBoost.items.length * 2};`"
+      >
         <item-carousel
           v-for="(item, index) in home.firstFocusBoost.items"
           :key="'focus_boost' + index"
+          class="splide__slide"
           only
           name="firstFocusBoost"
           :description="item.full"
           :resume="item.resume"
         />
-      </v-carousel>
+      </v-new-carousel>
       <span class="container">
-        <button @click="goTo('metodologia')">
+        <button @click="goTo('contato')">
           {{ home.firstFocusBoost.cta }}
         </button>
       </span>
     </v-container>
 
-    <v-banner id="metodologia" class="_actions_transform_market" :item="home.actionsTransformMarket" cta="about_us" goToCenter />
+    <v-banner id="metodologia" class="_actions_transform_market" :item="home.actionsTransformMarket" cta="about_us" go-to-center />
 
     <v-about-us id="about_us" :item="home.aboutUs" />
 
     <v-container id="invista-em-bons-negocios" nolimit class="_companies background_secondary">
-      <v-carousel
+      <v-new-carousel
         v-if="home.companies.items"
         class="_items"
         name="companies"
@@ -43,41 +49,16 @@
         :style="`--list: 8;`"
       >
         <item-carousel
-          :image="{src: 'icons/indexed.svg', width: '40px', height: '40px'}"
-          :title="home.companies.items.indexed.title"
-          :description="home.companies.items.indexed.description"
-          :resume="home.companies.items.indexed.resume"
+          v-for="item in home.companies.items"
+          :key="item.title.replaceAll(' ', '_')"
+          :image="{src: `icons/${item.name}.svg`, width: '40px', height: '40px'}"
+          :title="item.title"
+          :description="item.description"
+          :resume="item.resume"
+          class="splide__slide"
           name="companies"
         />
-        <item-carousel
-          :image="{src: 'icons/accompanied.svg', width: '40px', height: '40px'}"
-          :title="home.companies.items.accompanied.title"
-          :description="home.companies.items.accompanied.description"
-          :resume="home.companies.items.accompanied.resume"
-          name="companies"
-        />
-        <item-carousel
-          :image="{src: 'icons/boosted.svg', width: '40px', height: '40px'}"
-          :title="home.companies.items.boosted.title"
-          :description="home.companies.items.boosted.description"
-          :resume="home.companies.items.boosted.resume"
-          name="companies"
-        />
-        <item-carousel
-          :image="{src: 'icons/investee.svg', width: '40px', height: '40px'}"
-          :title="home.companies.items.investee.title"
-          :description="home.companies.items.investee.description"
-          :resume="home.companies.items.investee.resume"
-          name="companies"
-        />
-        <item-carousel
-          :image="{src: 'icons/investors_committee.svg', width: '40px', height: '40px'}"
-          :title="home.companies.items.investorsCommittee.title"
-          :description="home.companies.items.investorsCommittee.description"
-          :resume="home.companies.items.investorsCommittee.resume"
-          name="companies"
-        />
-      </v-carousel>
+      </v-new-carousel>
       <span class="container">
         <button @click="goTo('contato', true)">
           {{ home.companies.cta }}
@@ -155,7 +136,7 @@ export default {
           @apply flex items-center;
 
           button{
-            @apply w-max mx-auto mt-40px;
+            @apply w-max mx-auto mt-0px;
           }
         }
       }
@@ -181,7 +162,7 @@ export default {
         .container{
           @apply w-full flex;
           button{
-            @apply w-max mx-auto mt-40px;
+            @apply w-max mx-auto mt-0px;
           }
         }
       }

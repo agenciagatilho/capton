@@ -10,7 +10,7 @@
         <p v-if="resume" v-html="resume" :class="{'show': !state[this.name]}" />
       </div>
       <button v-if="resume" class="not" @click="openMenu">
-        Ver mais
+        {{ this.state[this.name] ? 'Ver menos' : 'Ver mais' }}
       </button>
     </div>
   </div>
@@ -63,10 +63,13 @@ export default {
   ._item_carousel_box{
     @apply h-full;
     ._inner{
-      @apply p-40px overflow-hidden grid w-385px h-full gap-20px;
+      @apply p-40px overflow-hidden grid w-385px h-full gap-0px;
       grid-template-rows: max-content max-content 1fr max-content;
       transition: all 0.3s ease-in-out;
 
+      h3{
+        @apply py-15px;
+      }
       ._desc{
         @apply relative;
         p{
@@ -88,7 +91,7 @@ export default {
       }
 
       &.only{
-        grid-template-rows: 1fr 5%;
+        grid-template-rows: 1fr max-content;
       }
     }
   }

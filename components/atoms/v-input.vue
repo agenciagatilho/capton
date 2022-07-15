@@ -203,6 +203,7 @@ export default {
 
     input, textarea, select{
         @apply h-full w-full py-10px px-20px bg-transparent font-bold resize-none;
+        font-family: 'Hando';
         font-size: 14px;
         line-height: 14px;
         &:focus{

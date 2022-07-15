@@ -93,7 +93,7 @@ export default {
     }
 
     ._partners{
-      @apply pb-75px;
+      @apply pb-150px;
       .container{
         @apply relative flex gap-0px pt-75px;
         ul{

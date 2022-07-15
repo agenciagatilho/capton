@@ -49,7 +49,7 @@ export default {
       @apply flex flex-col gap-60px;
 
       ._content{
-        @apply flex gap-90px items-center justify-between px-25px;
+        @apply flex gap-90px items-center justify-between px-25px pl-75px;
 
         ._text{
           @apply flex flex-col gap-40px max-w-560px;
@@ -57,10 +57,10 @@ export default {
       }
       hr{
         border-top: #093140 solid 1px;
-        @apply opacity-50;
+        @apply opacity-50 pb-15px;
       }
       ._items{
-        @apply grid grid-cols-2 gap-0px px-25px;
+        @apply grid grid-cols-2 gap-0px px-25px pl-75px;
 
         ._box{
           @apply flex flex-col gap-25px max-w-490px;
@@ -69,6 +69,11 @@ export default {
             @apply h-172px object-contain;
           }
 
+          &:nth-child(1){
+            h3{
+              @apply max-w-485px;
+            }
+          }
           &:nth-child(2){
             @apply ml-auto;
             h3{

@@ -51,9 +51,9 @@
         <div class="_social_media">
           <p>{{ medias.title }}</p>
           <span>
-            <a :href="medias.facebook">
+            <!-- <a :href="medias.facebook">
               <v-image src="icons/facebook.svg" width="16px" height="23px" />
-            </a>
+            </a> -->
             <a :href="medias.linkedin">
               <v-image src="icons/linkedin.svg" width="23px" height="21px" />
             </a>

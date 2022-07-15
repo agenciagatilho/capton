@@ -31,16 +31,16 @@ export default {
         dots: true,
         arrows: false,
         infinite: true,
-        speed: 6000,
+        speed: 4000,
         // focusOnSelect: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         variableWidth: true,
         autoplay: true,
-        autoplaySpeed: 100,
+        autoplaySpeed: 1000,
         cssEase: 'ease',
-        pauseOnDotsHover: false,
-        pauseOnHover: false,
+        pauseOnDotsHover: true,
+        pauseOnHover: true,
         responsive: [
           {
             breakpoint: 768,
@@ -80,8 +80,7 @@ export default {
   },
   methods: {
     pauseCarousel () {
-      console.log('enter')
-      this.$refs.v_carousel.pause()
+      // this.$refs.v_carousel.pause()
       const track = this.$refs.v_carousel.$el.querySelector('.slick-track')
       let translateTrack = getComputedStyle(track)
         .transform
@@ -98,7 +97,6 @@ export default {
       track.classList.add('paused')
     },
     playCarousel () {
-      console.log('exit')
       const track = this.$refs.v_carousel.$el.querySelector('.slick-track')
       track.classList.remove('paused')
       track.classList.add('resume')
@@ -166,12 +164,12 @@ export default {
       @apply -bottom-55px pointer-events-none;
       li{
         @apply w-50px h-5px bg-$primary rounded-15px origin-center pointer-events-auto;
-        width: calc(70vw / var(--list));
+        width: calc(50vw / var(--list));
         background: rgba(151, 188, 213, 0.5);
         transition: all 0.3s ease-in-out;
 
         &.slick-active{
-          width: calc(120vw / var(--list));
+          width: calc(100vw / var(--list));
           background: #97BCD5;
         }
 

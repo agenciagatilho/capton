@@ -35,7 +35,7 @@ export default {
 
     const items = gsap.utils.toArray('._about_us ._item')
     const arrowMasked = document.querySelector('._about_us ._animated_arrow')
-    const boxTrigger = document.querySelector('._about_us')
+    // const boxTrigger = document.querySelector('._about_us')
 
     items.forEach((item, index) => {
       const animOpacity = gsap.fromTo(item,
@@ -49,6 +49,15 @@ export default {
           duration: 1
         }
       )
+      const animRotate = gsap.fromTo(arrowMasked,
+        {
+          rotation: 0
+        },
+        {
+          rotation: 360,
+          duration: 1
+        }
+      )
 
       ScrollTrigger.create({
         trigger: item,
@@ -57,28 +66,36 @@ export default {
         toggleActions: 'play none reverse none',
         animation: animOpacity
       })
-    })
 
-    window.addEventListener('scroll', () => {
       ScrollTrigger.create({
-        trigger: boxTrigger,
-        start: 'top top',
-        end: 'bottom bottom',
-        toggleActions: 'restart none reverse none',
-        onEnter: (self) => {
-          this.boxSize = self.end - self.start
-
-          gsap.to(
-            arrowMasked,
-            {
-              rotation: ((360 * 3) * self.progress),
-              duration: 0.2,
-              ease: 'ease'
-            }
-          )
-        }
+        trigger: item,
+        start: 'top center',
+        end: 'bottom center',
+        toggleActions: 'play none reverse none',
+        animation: animRotate
       })
     })
+
+    // window.addEventListener('scroll', () => {
+    //   ScrollTrigger.create({
+    //     trigger: boxTrigger,
+    //     start: 'top top',
+    //     end: 'bottom bottom',
+    //     toggleActions: 'restart none reverse none',
+    //     onEnter: (self) => {
+    //       this.boxSize = self.end - self.start
+
+    //       gsap.to(
+    //         arrowMasked,
+    //         {
+    //           rotation: ((360 * 3) * self.progress),
+    //           duration: 0.2,
+    //           ease: 'ease'
+    //         }
+    //       )
+    //     }
+    //   })
+    // })
   },
   methods: {
     goTo (id, center = false) {

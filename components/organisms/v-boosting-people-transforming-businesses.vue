@@ -5,7 +5,7 @@
         <h2>{{ item.title }}</h2>
         <p>{{ item.description }}</p>
       </div>
-      <v-image src="images/impulsionando_pessoal.png" width="441px" height="431px" />
+      <v-image src="images/impulsionando_pessoal.webp" width="441px" height="431px" />
     </span>
     <hr>
     <span class="_items">

@@ -69,7 +69,7 @@
     <v-contact-form-home id="contato" :item="home.transformMyBusiness" />
 
     <v-container class="_investors_challenger">
-      <v-image src="/images/investidores_que_desafiam.png" />
+      <v-image src="/images/investidores_que_desafiam.webp" />
       <div class="_text">
         <h2>{{ home.investorsChallenger.title }}</h2>
         <p v-html="home.investorsChallenger.description" />

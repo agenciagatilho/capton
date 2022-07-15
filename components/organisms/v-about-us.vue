@@ -55,7 +55,7 @@ export default {
         },
         {
           rotation: 360,
-          duration: 1
+          duration: 0.5
         }
       )
 
@@ -63,7 +63,7 @@ export default {
         trigger: item,
         start: 'top center',
         end: 'bottom center',
-        toggleActions: 'play none reverse none',
+        toggleActions: 'restart none reverse none',
         animation: animOpacity
       })
 
@@ -75,27 +75,6 @@ export default {
         animation: animRotate
       })
     })
-
-    // window.addEventListener('scroll', () => {
-    //   ScrollTrigger.create({
-    //     trigger: boxTrigger,
-    //     start: 'top top',
-    //     end: 'bottom bottom',
-    //     toggleActions: 'restart none reverse none',
-    //     onEnter: (self) => {
-    //       this.boxSize = self.end - self.start
-
-    //       gsap.to(
-    //         arrowMasked,
-    //         {
-    //           rotation: ((360 * 3) * self.progress),
-    //           duration: 0.2,
-    //           ease: 'ease'
-    //         }
-    //       )
-    //     }
-    //   })
-    // })
   },
   methods: {
     goTo (id, center = false) {

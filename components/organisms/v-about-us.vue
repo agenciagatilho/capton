@@ -30,51 +30,51 @@ export default {
     }
   },
   mounted () {
-    const gsap = this.$gsap.base
-    const ScrollTrigger = this.$gsap.ScrollTrigger
+    if (this.$device.isDesktop) {
+      const gsap = this.$gsap.base
+      const ScrollTrigger = this.$gsap.ScrollTrigger
 
-    const items = gsap.utils.toArray('._about_us ._item')
-    const arrowMasked = document.querySelector('._about_us ._animated_arrow')
-    // const boxTrigger = document.querySelector('._about_us')
+      const items = gsap.utils.toArray('._about_us ._item')
+      const arrowMasked = document.querySelector('._about_us ._animated_arrow')
 
-    items.forEach((item, index) => {
-      const animOpacity = gsap.fromTo(item,
-        {
-          opacity: 0.4,
-          y: 20
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1
-        }
-      )
-      const animRotate = gsap.fromTo(arrowMasked,
-        {
-          rotation: 0
-        },
-        {
-          rotation: 360,
-          duration: 0.7
-        }
-      )
+      items.forEach((item, index) => {
+        const animOpacity = gsap.fromTo(item,
+          {
+            opacity: 0.4
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1
+          }
+        )
+        const animRotate = gsap.fromTo(arrowMasked,
+          {
+            rotation: 0
+          },
+          {
+            rotation: 360,
+            duration: 0.7
+          }
+        )
 
-      ScrollTrigger.create({
-        trigger: item,
-        start: 'top center',
-        end: 'bottom center',
-        toggleActions: 'restart none reverse none',
-        animation: animOpacity
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'restart none reverse none',
+          animation: animOpacity
+        })
+
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'play none reverse none',
+          animation: animRotate
+        })
       })
-
-      ScrollTrigger.create({
-        trigger: item,
-        start: 'top center',
-        end: 'bottom center',
-        toggleActions: 'play none reverse none',
-        animation: animRotate
-      })
-    })
+    }
   },
   methods: {
     goTo (id, center = false) {
@@ -97,7 +97,6 @@ export default {
 
 <style lang="scss">
   ._about_us{
-    scroll-snap-type: y mandatory;
     .container{
       @apply relative flex flex-col gap-150px pt-75px;
       >span{
@@ -174,12 +173,13 @@ export default {
   @media screen and (max-width: 768px) {
     ._about_us{
       .container{
-        @apply gap-100px pt-50px;
+        @apply gap-40px pt-50px;
         ul{
-          @apply gap-50px;
+          @apply gap-50px grid grid-rows-1 w-3000px overflow-x-auto pt-100px -mt-100px;
+          grid-auto-flow: column;
 
           ._item{
-            @apply gap-40px pl-30px;
+            @apply gap-40px pl-0px w-90vw pt-30px justify-start;
 
             h2{
               @apply max-w-500px;
@@ -205,17 +205,16 @@ export default {
 
             &::before{
               content: '';
-              background: rgba(0, 63, 242, 0.5);
-              height: calc(100% + 150px);
-              @apply absolute left-0 top-168px
-                      w-2px -mt-75px;
+              @apply absolute left-0 top-0px
+                     h-2px -mt-26px -ml-10vw;
+              width: calc(100% + 20vw)
             }
           }
         }
 
         ._down_arrow{
-          @apply w-38px h-38px
-                absolute -left-17px top-168px z-1
+          @apply w-30px h-30px mt-0 -ml-10px transform rotate-z-90
+                absolute left-1/2 -top-40px z-1
                 bg-no-repeat bg-cover;
           background-image: url('/images/arrow_down.png');
         }

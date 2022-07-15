@@ -30,56 +30,52 @@ export default {
     }
   },
   mounted () {
-    const gsap = this.$gsap.base
-    const ScrollTrigger = this.$gsap.ScrollTrigger
+    if (this.$device.isDesktop) {
+      const gsap = this.$gsap.base
+      const ScrollTrigger = this.$gsap.ScrollTrigger
 
-    const items = gsap.utils.toArray('._partners ._item')
-    // const arrowDown = document.querySelector('._partners ._down_arrow')
-    const arrowMasked = document.querySelector('._partners ._animated_arrow')
-    const boxTrigger = document.querySelector('._partners ul')
+      const items = gsap.utils.toArray('._partners ._item')
+      const arrowMasked = document.querySelector('._partners ._animated_arrow')
 
-    items.forEach((item, index) => {
-      const animOpacity = gsap.fromTo(item,
-        {
-          opacity: 0.4,
-          y: 30
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1
-        }
-      )
+      items.forEach((item, index) => {
+        const animOpacity = gsap.fromTo(item,
+          {
+            opacity: 0.4
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1
+          }
+        )
 
-      ScrollTrigger.create({
-        trigger: item,
-        start: 'top center',
-        end: 'bottom center',
-        toggleActions: 'play none reverse none',
-        animation: animOpacity
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'play none reverse none',
+          animation: animOpacity
+        })
+
+        const animRotate = gsap.fromTo(arrowMasked,
+          {
+            rotation: 0
+          },
+          {
+            rotation: 360,
+            duration: 0.7
+          }
+        )
+
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'play none reverse none',
+          animation: animRotate
+        })
       })
-    })
-
-    window.addEventListener('scroll', () => {
-      ScrollTrigger.create({
-        trigger: boxTrigger,
-        start: 'top top',
-        end: 'bottom center',
-        toggleActions: 'play none reverse none',
-        onEnter: (self) => {
-          this.boxSize = self.end - self.start
-
-          gsap.to(
-            arrowMasked,
-            {
-              rotation: (360 * 4) * self.progress,
-              duration: 0.2,
-              ease: 'ease'
-            }
-          )
-        }
-      })
-    })
+    }
   }
 }
 </script>
@@ -169,6 +165,85 @@ export default {
      >*{
        @apply px-100px;
      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #socios{
+      @apply text-center gap-25px;
+
+      ._partners{
+        @apply pb-0px pt-50px;
+        .container{
+          @apply p-0px;
+          ul{
+            @apply grid grid-rows-1 w-3000px
+                   gap-100px
+                   overflow-x-auto overflow-y-hidden;
+            grid-auto-flow: column;
+
+            ._item{
+              @apply flex-col w-78vw gap-70px p-0 pt-50px pl-0px relative items-center;
+
+              &:nth-child(1){
+                opacity: 1 !important;
+                transform: none !important;
+              }
+
+              ._img{
+                @apply bg-no-repeat bg-contain w-230px h-210px
+                      flex flex-col items-end justify-center;
+                background-image: url('/images/socios/bg_partner_item.png')
+              }
+
+              ._text{
+                @apply flex flex-col gap-8px;
+                h2{
+                  @apply max-w-600px font-bold;
+                }
+                a{
+                  @apply mb-20px flex gap-8px items-center justify-center;
+
+                  &::before{
+                    content: '';
+                    @apply w-14px h-14px flex mb-3px;
+                    background-image: url('/linkedin.svg');
+                  }
+                }
+                p{
+                  @apply max-w-590px;
+                }
+              }
+
+              &::before{
+                width: calc(100% + 20vw + 100px);
+                @apply absolute -left-0 top-0
+                        h-2px -mt-0px -ml-10vw;
+              }
+            }
+          }
+
+          ._down_arrow{
+            @apply w-full h-30px transform rotate-z-90
+                  sticky mt-0px -mr-0px -mt-9px left-1/2 -top-18px-25px z-2
+                  bg-no-repeat bg-contain;
+            background-image: url('/images/arrow_down.png');
+          }
+          ._animated_arrow{
+            @apply hidden;
+          }
+        }
+      }
+
+      #contato{
+        >*{
+          @apply px-15px;
+
+          form{
+            @apply p-0;
+          }
+        }
+      }
     }
   }
 </style>

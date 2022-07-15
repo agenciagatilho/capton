@@ -70,4 +70,24 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    ._vision_beyound{
+      .container{
+        @apply grid grid-cols-1 gap-50px;
+
+        ._text{
+          @apply flex flex-col gap-40px;
+        }
+
+        #form_contact_socios{
+          @apply pl-10px flex flex-col gap-20px;
+
+          button{
+            @apply ml-auto w-max px-50px rounded-15px;
+          }
+        }
+      }
+    }
+  }
 </style>

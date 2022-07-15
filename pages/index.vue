@@ -250,8 +250,8 @@ export default {
 
           >.container{
 
-            .default_button{
-              @apply mt-30px;
+            button{
+              @apply -mt-10px;
             }
           }
         }
@@ -268,7 +268,7 @@ export default {
           .container{
             @apply w-full flex;
             button{
-              @apply w-max mx-auto mt-0px;
+              @apply w-max mx-auto mt-10px;
             }
           }
         }

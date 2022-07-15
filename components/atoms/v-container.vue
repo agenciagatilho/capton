@@ -62,7 +62,7 @@ export default {
         @apply px-15px max-w-400px mx-auto;
       }
       .container.small{
-        @apply max-w-300px;
+        @apply max-w-400px;
       }
     }
   }

@@ -92,7 +92,7 @@ export default {
         }
 
         ._items{
-          @apply;
+          @apply grid-cols-1;
 
           .slick-slide{
             @apply h-full;

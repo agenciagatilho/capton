@@ -10,7 +10,7 @@
       </ul>
       <div class="_animated_arrow" />
     </span>
-    <button @click="goTo('invista-em-bons-negocios', true)">
+    <button @click="goTo('contato', true)">
       {{ item.cta }}
     </button>
   </v-container>
@@ -41,7 +41,7 @@ export default {
       const animOpacity = gsap.fromTo(item,
         {
           opacity: 0.4,
-          y: 50
+          y: 20
         },
         {
           opacity: 1,
@@ -55,7 +55,7 @@ export default {
         },
         {
           rotation: 360,
-          duration: 0.5
+          duration: 0.7
         }
       )
 

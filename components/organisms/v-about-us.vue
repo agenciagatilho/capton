@@ -229,6 +229,11 @@ export default {
               width: calc(100% + 20vw)
             }
           }
+          .slick-slide:nth-last-child(1){
+            ._item::before{
+              width: calc(65%)
+            }
+          }
         }
 
         ._down_arrow{

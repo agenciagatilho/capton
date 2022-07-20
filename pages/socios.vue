@@ -245,6 +245,11 @@ export default {
                         h-2px -mt-0px -ml-10vw;
               }
             }
+            .slick-slide:nth-last-child(1){
+              ._item::before{
+                width: calc(65%)
+              }
+            }
           }
 
           ._down_arrow{

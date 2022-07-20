@@ -70,12 +70,14 @@ export default {
                 pauseOnHover: false,
                 perPage: 1,
                 autoScroll: {
-                  speed: 0.5
+                  speed: 0.8
                 }
               }
         )
 
         splide.mount({ AutoScroll })
+        const { Autoplay } = splide.Components
+        Autoplay.play()
       }
     })
   }

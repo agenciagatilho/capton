@@ -1,16 +1,16 @@
 <template>
-  <div ref="item_carousel_box" class="_item_carousel_box">
+  <div ref="item_carousel_box" class="_item_carousel_box" :class="{'uniq': uniqState}">
     <div class="_inner" :class="{'only': only}">
       <v-image v-if="image" :src="image.src" :width="image.width" :height="image.height" />
       <h3 v-if="title">
         {{ title }}
       </h3>
       <div class="_desc">
-        <p v-if="description" v-html="description" :class="{'show': state[this.name] || !resume}" />
-        <p v-if="resume" v-html="resume" :class="{'show': !state[this.name]}" />
+        <p v-if="description" :class="{'show': state[name] || !resume}" v-html="computedDescription" />
+        <p v-if="resume" :class="{'show': !state[name]}" v-html="resume" />
       </div>
       <button v-if="resume" class="not" @click="openMenu">
-        {{ this.state[this.name] ? 'Ver menos' : 'Ver mais' }}
+        {{ state[name] ? 'Ver menos' : 'Ver mais' }}
       </button>
     </div>
   </div>
@@ -48,12 +48,21 @@ export default {
   },
   data () {
     return {
-      state: useCarouselState()
+      state: useCarouselState(),
+      uniqState: false
+    }
+  },
+  computed: {
+    computedDescription () {
+      return this.$device.isDesktop
+        ? this.description
+        : this.description.replace(this.resume, '')
     }
   },
   methods: {
     openMenu () {
       this.state[this.name] = !this.state[this.name]
+      this.uniqState = !this.uniqState
     }
   }
 }
@@ -98,17 +107,22 @@ export default {
 
   @media screen and (max-width: 768px) {
     ._item_carousel_box{
-      @apply h-full;
+      @apply h-full transform rotate-y-0;
+      transition: transform 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955);
       ._inner{
         @apply p-30px w-full h-full gap-20px;
         grid-template-rows: 10% 10% 50% 5%;
+
+        p{
+          transition: all 0.2s ease-in-out;
+        }
 
         svg{
           @apply mx-auto;
         }
 
         &.only{
-          grid-template-rows: 1fr 5%;
+          grid-template-rows: 1fr max-content;
         }
       }
     }

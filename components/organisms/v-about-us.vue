@@ -2,12 +2,12 @@
   <v-container class="_about_us">
     <span>
       <div class="_down_arrow" />
-      <component :is="$device.isDesktop ? 'ul' : 'VueSlickCarousel'" v-bind="settings">
+      <ul>
         <li v-for="(item, index) in item.items" :key="'about_us_'+index" class="_item">
-          <h2>{{ index + 1 }}. {{ item.title }}</h2>
+          <h2>{{ 3 > index ? `${index + 1}.`: '' }} {{ item.title }}</h2>
           <p>{{ item.description }}</p>
         </li>
-      </component>
+      </ul>
       <div class="_animated_arrow" />
     </span>
     <button @click="goTo('contato', true)">
@@ -17,13 +17,7 @@
 </template>
 
 <script>
-import VueSlickCarousel from 'vue-slick-carousel'
-import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
-  components: {
-    VueSlickCarousel
-  },
   props: {
     item: {
       type: Object,
@@ -44,14 +38,14 @@ export default {
     }
   },
   mounted () {
-    if (this.$device.isDesktop) {
-      const gsap = this.$gsap.base
-      const ScrollTrigger = this.$gsap.ScrollTrigger
+    const gsap = this.$gsap.base
+    const ScrollTrigger = this.$gsap.ScrollTrigger
 
-      const items = gsap.utils.toArray('._about_us ._item')
-      const arrowMasked = document.querySelector('._about_us ._animated_arrow')
+    const items = gsap.utils.toArray('._about_us ._item')
+    const arrowMasked = document.querySelector('._about_us ._animated_arrow')
 
-      items.forEach((item, index) => {
+    items.forEach((item, index) => {
+      if (this.$device.isDesktop) {
         const animOpacity = gsap.fromTo(item,
           {
             opacity: 0.4
@@ -62,6 +56,14 @@ export default {
             duration: 1
           }
         )
+
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'restart none reverse none',
+          animation: animOpacity
+        })
         const animRotate = gsap.fromTo(arrowMasked,
           {
             rotation: 0
@@ -76,19 +78,36 @@ export default {
           trigger: item,
           start: 'top center',
           end: 'bottom center',
-          toggleActions: 'restart none reverse none',
-          animation: animOpacity
+          toggleActions: 'play none reverse none',
+          animation: animRotate
         })
+      } else {
+        const animOpacity = gsap.fromTo(item,
+          {
+            opacity: 0.4 / index
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1
+          }
+        )
 
         ScrollTrigger.create({
           trigger: item,
           start: 'top center',
-          end: 'bottom center',
-          toggleActions: 'play none reverse none',
-          animation: animRotate
+          end: 'center center',
+          toggleActions: 'play none restart none',
+          animation: animOpacity,
+          onEnter: () => {
+            item.classList.add('enter')
+          },
+          onLeaveBack: () => {
+            item.classList.remove('enter')
+          }
         })
-      })
-    }
+      }
+    })
   },
   methods: {
     goTo (id, center = false) {
@@ -116,7 +135,7 @@ export default {
       >span{
         @apply flex;
       }
-      ul, .slick-slider{
+      ul{
         @apply flex flex-col gap-75px;
 
         ._item{
@@ -192,9 +211,10 @@ export default {
         >span{
           @apply block;
         }
-        .slick-slider{
+        ul{
+          @apply gap-80px;
           ._item{
-            @apply gap-40px pl-0px w-90vw pt-50px justify-start;
+            @apply gap-40px pl-0px w-90vw pt-0px justify-start mx-auto;
 
             >*{
               @apply px-15px;
@@ -203,30 +223,18 @@ export default {
             h2{
               @apply max-w-500px mb-40px;
             }
-            p{
-              @apply max-w-590px;
-            }
-
-            &:nth-child(1) h2{
-              @apply max-w-550px;
-            }
-            &:nth-child(2) p{
-              @apply max-w-630px;
-            }
-            &:nth-last-child(1){
-              h2{
-                @apply max-w-700px;
-              }
-              p{
-                @apply max-w-610px;
-              }
-            }
 
             &::before{
-              content: '';
-              @apply absolute left-0 top-0px
-                     h-2px mt-0px -ml-10vw;
-              width: calc(100% + 20vw)
+              background: #97BCD580;
+              height: calc(50%);
+              @apply top-1/2 w-5px m-0 rounded-full
+                     transform -translate-y-1/2;
+              transition: all ease-in-out 1s;
+            }
+
+            &.enter::before{
+              background: #97BCD5;
+              height: calc(100%);
             }
           }
           .slick-slide:nth-last-child(1){
@@ -237,10 +245,7 @@ export default {
         }
 
         ._down_arrow{
-          @apply w-30px h-30px -mt-25px -ml-10px transform rotate-z-90
-                absolute left-1/2 top-10px z-1
-                bg-no-repeat bg-cover;
-          background-image: url('/images/arrow_down.png');
+          @apply hidden;
         }
 
         ._animated_arrow{

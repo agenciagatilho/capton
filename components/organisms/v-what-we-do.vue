@@ -1,7 +1,7 @@
 <template>
   <v-container class="_what_we_do background_secondary">
     <h2>{{ item.title }}</h2>
-    <component :is="mobileElement" class="_items" :bind="settings">
+    <component :is="mobileElement" class="_items" v-bind="settings">
       <div class="_box">
         <v-image src="icons/investment.svg" width="40px" height="42px" />
         <h3>{{ item.items.investment.title }}</h3>
@@ -43,7 +43,9 @@ export default {
         infinite: true,
         speed: 300,
         slidesToScroll: 1,
-        slidesToShow: 1
+        slidesToShow: 1,
+        variableWidth: true,
+        centerMode: true
       }
     }
   },
@@ -92,15 +94,15 @@ export default {
         }
 
         ._items{
-          @apply grid-cols-1;
+          @apply grid-cols-1 max-h-360px;
 
           .slick-slide{
-            @apply h-full;
+            @apply h-full ;
             >div{
               @apply h-100vw max-h-400px;
 
               ._box{
-                @apply p-25px h-full text-center;
+                @apply py-25px px-15px h-full max-w-70vw text-center;
                 transition: all 0.2s ease-in-out;
 
                 >*{

@@ -2,7 +2,7 @@
   <section
     ref="splide"
     class="splide v-new-carousel"
-    :style="`--close: ${closeHeight}; --open: ${openHeight};`"
+    :style="`--close: ${this.$device.isDesktop ? closeHeight : '350px'}; --open: ${openHeight};`"
   >
     <div class="splide__arrows" />
     <div class="splide__slider">
@@ -70,14 +70,12 @@ export default {
                 pauseOnHover: false,
                 perPage: 1,
                 autoScroll: {
-                  speed: 0.8
+                  speed: 0.1
                 }
               }
         )
 
         splide.mount({ AutoScroll })
-        const { Autoplay } = splide.Components
-        Autoplay.play()
       }
     })
   }
@@ -139,6 +137,10 @@ export default {
   .v-new-carousel{
     .splide__list {
       &._v_show{
+        @apply min-h-$close;
+        ._item_carousel_box.uniq{
+          @apply rotate-y-360;
+        }
       }
     }
 

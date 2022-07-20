@@ -1,7 +1,10 @@
 <template>
-  <div class="mouse_icon">
+  <div class="mouse_icon" v-if="$device.isDesktop">
     <v-image src="icons/mouse_icon.svg" />
     <v-image src="icons/arrow_mouse.svg" />
+  </div>
+  <div class="mouse_icon" v-else>
+    <v-image src="icons/mouse_icon_mobile.svg" />
   </div>
 </template>
 
@@ -20,6 +23,14 @@ export default {
       }
       &:nth-child(2){
         @apply w-21px -mt-10px;
+          animation: mouseArrow 2s ease infinite;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .mouse_icon{
+      >*{
           animation: mouseArrow 2s ease infinite;
       }
     }

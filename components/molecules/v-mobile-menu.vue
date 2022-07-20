@@ -93,10 +93,14 @@ export default {
     ._mobile_menu{
       @apply fixed h-full w-60vw right-0 top-0 z-999
             bg-$bg-secondary py-25px px-15px
-            flex flex-col gap-15px items-end
+            flex flex-col gap-35px items-end
             transform translate-x-1/1
             pointer-events-none;
       transition: all 0.2s ease-in;
+
+      svg, svg *{
+        @apply fill-$secondary;
+      }
 
       &::before{
         content: '';
@@ -112,7 +116,7 @@ export default {
       }
 
       menu{
-        @apply p-0 m-0 flex flex-col items-end gap-15px;
+        @apply p-0 m-0 flex flex-col items-end gap-35px;
 
         a, button{
           @apply text-right font-semibold;

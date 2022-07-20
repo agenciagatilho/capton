@@ -18,6 +18,9 @@ export default {
   },
   watch: {
     $route (newVal, oldVal) {
+      setTimeout(() => {
+        this.startAnimation()
+      }, 600)
       if (newVal.name === 'politica-de-privacidade') {
         this.state.fixedBG = true
       } else {
@@ -38,29 +41,27 @@ export default {
       const gsap = this.$gsap.base
       const ScrollTrigger = this.$gsap.ScrollTrigger
 
-      const items = gsap.utils.toArray('#body main .container >*')
+      const items = gsap.utils.toArray(
+        '#body main .container'
+      )
 
       items.forEach((item, index) => {
-        const anim = gsap.fromTo(
-          item,
-          {
-            autoAlpha: 0.5,
-            y: -10
-          },
-          {
-            duration: 0.4,
-            autoAlpha: 1,
-            y: 0
-          }
-        )
+        if (index !== 0) {
+          item.classList.add('scroll')
+          item.classList.add('hide')
 
-        ScrollTrigger.create({
-          trigger: item,
-          animation: anim,
-          start: 'top bottom',
-          end: 'bottom top',
-          toggleActions: 'restart none none none'
-        })
+          ScrollTrigger.create({
+            trigger: item,
+            start: 'top bottom',
+            end: 'center bottom',
+            onEnter: () => {
+              item.classList.remove('hide')
+            },
+            onLeaveBack: () => {
+              item.classList.add('hide')
+            }
+          })
+        }
       })
     }
   }

@@ -28,43 +28,43 @@ export default {
     }
   },
   mounted () {
-    const gsap = this.$gsap.base
-    const ScrollTrigger = this.$gsap.ScrollTrigger
+    // const gsap = this.$gsap.base
+    // const ScrollTrigger = this.$gsap.ScrollTrigger
 
-    const boxSize = this.$refs.this_banner.$el.querySelector('.container')
-    const h1 = this.$refs.this_banner.$el.querySelector('.container ._text')
+    // const boxSize = this.$refs.this_banner.$el.querySelector('.container')
+    // const h1 = this.$refs.this_banner.$el.querySelector('.container ._text')
 
-    const anim = gsap.fromTo(
-      h1,
-      {
-        autoAlpha: 0.3,
-        y: -50
-      },
-      {
-        duration: 0.6,
-        autoAlpha: 1,
-        y: 0
-      }
-    )
+    // const anim = gsap.fromTo(
+    //   h1,
+    //   {
+    //     autoAlpha: 0.3,
+    //     y: -50
+    //   },
+    //   {
+    //     duration: 0.6,
+    //     autoAlpha: 1,
+    //     y: 0
+    //   }
+    // )
 
-    if (boxSize.offsetTop !== 0) {
-      ScrollTrigger.create({
-        trigger: boxSize,
-        animation: anim,
-        start: 'top center',
-        end: 'bottom center',
-        toggleActions: 'restart none restart none'
-      })
-    } else {
-      anim.play()
+    // if (boxSize.offsetTop !== 0) {
+    //   ScrollTrigger.create({
+    //     trigger: boxSize,
+    //     animation: anim,
+    //     start: 'top center',
+    //     end: 'bottom center',
+    //     toggleActions: 'restart none restart none'
+    //   })
+    // } else {
+    //   anim.play()
 
-      ScrollTrigger.create({
-        trigger: this.$refs.this_banner.$el,
-        animation: anim,
-        start: 'top top',
-        toggleActions: 'restart reverse reverse restart'
-      })
-    }
+    //   ScrollTrigger.create({
+    //     trigger: this.$refs.this_banner.$el,
+    //     animation: anim,
+    //     start: 'top top',
+    //     toggleActions: 'restart reverse reverse restart'
+    //   })
+    // }
   },
   methods: {
     goTo (id, center = false) {

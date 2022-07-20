@@ -87,7 +87,7 @@ export default {
   @media screen and (max-width: 768px) {
     ._what_we_do{
       .container{
-        @apply block text-center gap-30px;
+        @apply block text-center gap-30px px-0;
 
         h2{
           @apply mb-30px;

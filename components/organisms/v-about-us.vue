@@ -234,7 +234,7 @@ export default {
 
             &.enter::before{
               background: #97BCD5;
-              height: calc(100%);
+              height: calc(80%);
             }
           }
           .slick-slide:nth-last-child(1){

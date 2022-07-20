@@ -66,6 +66,8 @@ export default {
                 type: 'loop',
                 drag: true,
                 focus: 'center',
+                pauseOnFocus: false,
+                pauseOnHover: false,
                 perPage: 1,
                 autoScroll: {
                   speed: 0.5

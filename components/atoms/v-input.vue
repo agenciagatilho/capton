@@ -196,7 +196,7 @@ export default {
 
 <style lang="scss" scoped>
 .input-box{
-    @apply w-full flex bg-white rounded-15px border-2px
+    @apply w-full flex bg-white rounded-20px border-2px
            border-$text text-$text;
 
     label{ font-size: 0; @apply w-0 h-0 opacity-0; }

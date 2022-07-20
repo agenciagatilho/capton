@@ -100,7 +100,7 @@ export default {
           @apply flex flex-col gap-120px;
 
           ._item{
-            @apply flex gap-70px pl-100px relative;
+            @apply flex gap-55px pl-90px relative;
 
             &:nth-child(1){
               opacity: 1 !important;
@@ -130,6 +130,16 @@ export default {
               p{
                 @apply max-w-590px;
               }
+            }
+
+            &:nth-child(2) p{
+              @apply max-w-610px;
+            }
+            &:nth-child(3) p{
+              @apply max-w-615px;
+            }
+            &:nth-child(5) p{
+              @apply max-w-645px;
             }
 
             &::before{

@@ -87,7 +87,7 @@ export default {
       }
 
       button{
-        @apply underline font-bold mt-auto;
+        @apply underline font-bold mt-auto mr-auto;
       }
 
       &.only{

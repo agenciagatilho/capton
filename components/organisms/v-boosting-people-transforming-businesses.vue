@@ -3,7 +3,7 @@
     <span class="_content">
       <div class="_text">
         <h2>{{ item.title }}</h2>
-        <p>{{ item.description }}</p>
+        <p v-html="item.description" />
       </div>
       <v-image src="images/impulsionando_pessoal.webp" width="441px" height="431px" />
     </span>
@@ -77,7 +77,7 @@ export default {
           &:nth-child(2){
             @apply ml-auto;
             h3{
-              @apply max-w-460px;
+              @apply max-w-380px;
             }
           }
         }
@@ -94,14 +94,14 @@ export default {
         @apply gap-40px text-center;
 
         ._content{
-          @apply flex-col-reverse gap-40px;
+          @apply flex-col-reverse gap-40px p-0px;
 
           ._text{
             @apply gap-40px max-w-560px;
           }
         }
         ._items{
-          @apply grid-cols-1 gap-50px;
+          @apply grid-cols-1 gap-50px p-0px;
 
           ._box{
             @apply items-center;

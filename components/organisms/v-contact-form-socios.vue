@@ -55,14 +55,18 @@ export default {
 <style lang="scss">
   ._vision_beyound{
     .container{
-      @apply grid grid-cols-2 gap-100px;
+      @apply grid grid-cols-2 gap-0px;
 
       ._text{
         @apply flex flex-col gap-40px;
+
+        p{
+          @apply -mr-10px;
+        }
       }
 
       #form_contact_socios{
-        @apply pl-10px flex flex-col gap-20px;
+        @apply pl-100px flex flex-col gap-20px;
 
         button{
           @apply ml-auto w-max px-50px rounded-15px;

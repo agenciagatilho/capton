@@ -57,8 +57,12 @@ export default {
     .container{
       @apply grid grid-cols-2 gap-100px;
 
+      h2{
+        @apply max-w-440px;
+      }
+
       ._text{
-        @apply flex flex-col gap-40px;
+        @apply flex flex-col gap-40px max-w-510px;
       }
 
       #form_contact_home{

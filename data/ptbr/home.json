@@ -23,15 +23,15 @@
   },
   "boostingPeopleTransformingBusinesses": {
     "title": "Impulsionando pessoas, transformando negócios.",
-    "description": "Somos uma impulsionadora de negócios e nosso propósito é gerar resultados, criar pontes e trocar conhecimentos antes de investir.",
+    "description": "Somos uma impulsionadora de negócios e nosso propósito é gerar resultados, criar pontes e trocar conhecimentos antes de investir.<br><br>Acreditamos no <strong>smart first, money after.</strong> Entramos nos negócios com nosso método para potencializar a operação, desenvolvendo relacionamentos e conexões para, no tempo certo, escalar com investimento.",
     "items": {
       "experience": {
         "title": "Como um experiente capitão, navegamos os mares com excelência.",
         "description": "Através de uma metodologia própria, potencializamos negócios. Ajudamos a identificar os pontos fortes da sua empresa, focando nos que precisam de mais atenção. Auxiliamos empresas a estruturar processos de acordo com sua necessidade e, dessa forma, se desenvolver operacionalmente."
       },
       "security": {
-        "title": "Segurança e estabilidade para navegar mesmo em alto mar.",
-        "description": "Navegamos ao seu lado, trazendo uma nova visão de mercado, identificando oportunidades, compartilhando conhecimento e ajudando a aplicar nossa metodologia dentro do seu negócio."
+        "title": "Segurança e estabilidade para navegar em alto mar.",
+        "description": "Navegamos ao seu lado trazendo uma nova visão de mercado, identificando oportunidades, compartilhando conhecimento e ajudando a aplicar nossa metodologia dentro do seu negócio."
       }
     },
     "cta": "Conheça nossa tripulação"
@@ -89,68 +89,6 @@
       }
     ],
     "cta": "Quero transformar meu negócio"
-  },
-  "companies": {
-    "items": [
-      {
-        "name": "cadastradas",
-        "title": "Empresas cadastradas",
-        "description": "Empresas que se cadastraram no nosso site mas ainda não fazem parte do grupo Capton."
-      },
-      {
-        "name": "acompanhadas",
-        "title": "Empresas acompanhadas",
-        "description": "Empresas que já possuem um relacionamento com nossa equipe e estão qualificadas para futuras oportunidades de investimento. Essa lista de empresas tem contato mensal com a Capton para coleta de informações que nutrem nosso software, mas não recebem auxílio direto para o desenvolvimento.",
-        "resume": "São empresas que já possuem um relacionamento com nossa equipe e estão qualificadas para futuras oportunidades de investimentos."
-      },
-      {
-        "name": "acompanhadas",
-        "title": "Empresas impulsionadas",
-        "description": "Empresas que recebem esforço para crescimento. Nesse grupo, a metodologia da Capton é aplicada mensalmente com foco em uma etapa por mês, desenvolvendo o fluxo completo em seis meses, a fim de preparar a impulsionada para receber investimento."
-      },
-      {
-        "name": "investidas",
-        "title": "Empresas investidas",
-        "description": "Esse grupo é formado por empresas que se cadastraram no site e foram reconhecidas como aptas a passar direto para a fase de investimento ou empresas que já passaram por todo o funil. Essas empresas receberam investimento da Capton para desenvolvimento."
-      },
-      {
-        "name": "investidores",
-        "title": "Comitê e investidores",
-        "resume": "Nosso comitê é formado pelos sócios da Capton, responsáveis pela execução dos processos juntos às impulsionadas e por tirar as ideias do papel, identificar a melhor forma de investir o dinheiro e captar novos investidores.",
-        "description": "Nosso comitê é formado pelos sócios da Capton, responsáveis pela execução dos processos juntos às impulsionadas e por tirar as ideias do papel, identificar a melhor forma de investir o dinheiro e captar novos investidores. <br>O grupo de investidores da Capton recebe cinco novos integrantes a cada 6 meses. Os membros desse grupo pagam um valor mensal para acompanhar tudo que está acontecendo nos processos que formam o funil."
-      },
-      {
-        "name": "promissora",
-        "title": "Acredita que sua ideia é promissora?",
-        "description": "Faça parte do time de empresas acompanhadas conectando-se à nossa rede. Juntos iremos entender seu negócio e as necessidades e auxiliar em conexões."
-      },
-      {
-        "name": "impulsionando",
-        "title": "Impulsionando com Smart",
-        "description": "Depois de acompanhar e entender a sinergia, empresas são selecionadas para crescer com a gente."
-      },
-      {
-        "name": "inteligente",
-        "title": "Money inteligente",
-        "description": "Após resultados concretos, crescimento provado e gargalos resolvidos, o cheque vem para escalar seu negócio."
-      },
-      {
-        "name": "metodologia",
-        "title": "Metodologia",
-        "description": "OKRs e objetivos → Produto e roadmaps → Vendas e oportunidades → Expansão e canais → Gestão e métricas → Captação de investimento."
-      },
-      {
-        "name": "consultoria",
-        "title": "Consultoria Zucchi",
-        "description": "50% pago pelo Sebrae e 50% pago pela empresa."
-      },
-      {
-        "name": "consultoria",
-        "title": "Ferramenta Capton",
-        "description": "Acesso à plataforma e às reuniões de negócios → Perfil de investidor tecnológico e com visão semelhante à nossa e contatos adjacentes"
-      }
-    ],
-    "cta": "Fale conosco"
   },
   "transformMyBusiness": {
     "title": "Quero transformar meu negócio",

@@ -39,33 +39,6 @@
 
     <v-about-us id="about_us" :item="home.aboutUs" />
 
-    <v-container id="invista-em-bons-negocios" nolimit class="_companies background_secondary">
-      <v-new-carousel
-        v-if="home.companies.items"
-        class="_items"
-        name="companies"
-        close-height="450px"
-        open-height="500px"
-        :style="`--list: 8;`"
-      >
-        <item-carousel
-          v-for="item in home.companies.items"
-          :key="item.title.replaceAll(' ', '_')"
-          :image="{src: `icons/${item.name}.svg`, width: '40px', height: '40px'}"
-          :title="item.title"
-          :description="item.description"
-          :resume="item.resume"
-          class="splide__slide"
-          name="companies"
-        />
-      </v-new-carousel>
-      <span class="container">
-        <button @click="goTo('contato', true)">
-          {{ home.companies.cta }}
-        </button>
-      </span>
-    </v-container>
-
     <v-contact-form-home id="contato" :item="home.transformMyBusiness" />
 
     <v-container class="_investors_challenger">
@@ -130,6 +103,9 @@ export default {
       >*{
         @apply flex flex-col gap-40px;
 
+        h2{
+          @apply max-w-1000px;
+        }
         >.container{
           @apply flex items-center;
 
@@ -142,6 +118,12 @@ export default {
 
     ._actions_transform_market{
       background-image: url('/images/background_banner_2.gif');
+      h1{
+        font-size: 48px;
+      }
+      p{
+        @apply max-w-635px;
+      }
     }
 
     ._companies{
@@ -190,7 +172,7 @@ export default {
 
     ._capton_club{
       .container{
-        @apply pt-40px pb-30px px-100px bg-$bg-secondary rounded-40px;
+        @apply pt-40px pb-40px px-100px bg-$bg-secondary rounded-40px;
         @apply flex flex-col gap-30px;
 
         ._text{

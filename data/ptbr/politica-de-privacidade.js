@@ -220,24 +220,30 @@ const privacy = `
   <h2>Como entrar em contato</h2>
   <p>Você pode entrar em contato caso surja qualquer dúvida em relação a esta Política e nossas práticas de privacidade e proteção de dados pessoais.</p>
 
-  <li><strong>Encarregado pelo tratamento de dados pessoais:</strong></li>
   <ul>
-    <li>Duan Bressan</li>
-    <li>duan@capton.com.br</li>
-    <li>49 9 8816-1473</li>
+    <li><strong>Encarregado pelo tratamento de dados pessoais:</strong></li>
+    <ul>
+      <li>Duan Bressan</li>
+      <li>duan@capton.com.br</li>
+      <li>49 9 8816-1473</li>
+    </ul>
   </ul>
 
-  <li><strong>Portal da Privacidade:</strong></li>
   <ul>
-    <li>capton.com.br/politica-privacidade</li>
-    <li>Por telefone:</li>
-    <li>49 9 8816-1473</li>
+    <li><strong>Portal da Privacidade:</strong></li>
+    <ul>
+      <li>capton.com.br/politica-privacidade</li>
+      <li>Por telefone:</li>
+      <li>49 9 8816-1473</li>
+    </ul>
   </ul>
 
-  <li><strong>Pessoalmente ou por correio convencional:</strong></li>
   <ul>
-    <li>Nós Coworking Business | Rua Clevelândia, 557D | Jardim Itália</li>
-    <li>Chapecó/SC | CEP 89802-405</li>
+    <li><strong>Pessoalmente ou por correio convencional:</strong></li>
+    <ul>
+      <li>Nós Coworking Business | Rua Clevelândia, 557D | Jardim Itália</li>
+      <li>Chapecó/SC | CEP 89802-405</li>
+    </ul>
   </ul>
 
   <p>Vamos receber e retornar todas as solicitações e contatos o mais rápido possível.</p>

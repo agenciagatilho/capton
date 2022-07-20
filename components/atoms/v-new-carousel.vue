@@ -1,8 +1,8 @@
 <template>
   <section
+    ref="splide"
     class="splide"
     :style="`--close: ${closeHeight}; --open: ${openHeight};`"
-    ref="splide"
   >
     <div class="splide__arrows" />
     <div class="splide__slider">
@@ -50,17 +50,28 @@ export default {
     const splides = document.querySelectorAll('.splide')
 
     splides.forEach((item) => {
-      console.log(item)
       if (!item.classList.contains('is-initialized')) {
-        const splide = new Splide(item, {
-          type: 'loop',
-          drag: 'free',
-          focus: 'center',
-          perPage: 3,
-          autoScroll: {
-            speed: 1
-          }
-        })
+        const splide = new Splide(item,
+          this.$device.isDesktop
+            ? {
+                type: 'loop',
+                drag: 'free',
+                focus: 'center',
+                perPage: 3,
+                autoScroll: {
+                  speed: 1
+                }
+              }
+            : {
+                type: 'loop',
+                drag: true,
+                focus: 'center',
+                perPage: 1,
+                autoScroll: {
+                  speed: 0.5
+                }
+              }
+        )
 
         splide.mount({ AutoScroll })
       }
@@ -115,6 +126,29 @@ export default {
         @apply hidden;
         &::before{
           content: '';
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .splide{
+    .splide__list {
+      &._v_show{
+      }
+    }
+
+    .splide__arrows{
+    }
+
+    .splide__pagination {
+      li button{
+        &.is-active{
+        }
+        button{
+          &::before{
+          }
         }
       }
     }

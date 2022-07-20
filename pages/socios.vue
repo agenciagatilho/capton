@@ -3,7 +3,7 @@
     <v-banner :item="socios.banner" cta="/" class="_banner_socios" />
     <v-container class="_partners">
       <div class="_down_arrow" />
-      <ul>
+      <component :is="$device.isDesktop ? 'ul' : 'VueSlickCarousel'" v-bind="settings">
         <li v-for="(item, index) in socios.partners" :key="'partners_'+index" class="_item">
           <span class="_img">
             <v-image :src="`images/socios/${item.name}.png`" width="127px" height="127px" />
@@ -14,7 +14,7 @@
             <p v-html="item.description" />
           </div>
         </li>
-      </ul>
+      </component>
       <div class="_animated_arrow" />
     </v-container>
     <v-contact-form-socios id="contato" :item="socios.visionBeyound" />
@@ -22,11 +22,25 @@
 </template>
 
 <script>
+import VueSlickCarousel from 'vue-slick-carousel'
 import socios from '@/data/ptbr/partners.json'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
+  components: {
+    VueSlickCarousel
+  },
   data () {
     return {
-      socios
+      socios,
+      settings: {
+        dots: false,
+        arrows: false,
+        infinite: false,
+        speed: 300,
+        slidesToScroll: 1,
+        slidesToShow: 1
+      }
     }
   },
   mounted () {
@@ -96,7 +110,7 @@ export default {
       @apply pb-150px;
       .container{
         @apply relative flex gap-0px pt-75px;
-        ul{
+        ul, .slick-slider{
           @apply flex flex-col gap-120px;
 
           ._item{
@@ -183,17 +197,17 @@ export default {
       @apply text-center gap-25px;
 
       ._partners{
-        @apply pb-0px pt-50px;
+        @apply pb-100px pt-50px;
         .container{
           @apply p-0px;
-          ul{
-            @apply grid grid-rows-1 w-3000px
+          .slick-slider{
+            @apply block grid-rows-1
                    gap-100px
                    overflow-x-auto overflow-y-hidden;
             grid-auto-flow: column;
 
             ._item{
-              @apply flex-col w-78vw gap-70px p-0 pt-50px pl-0px relative items-center;
+              @apply gap-70px p-0 pt-50px pl-0px relative items-center;
 
               &:nth-child(1){
                 opacity: 1 !important;
@@ -201,13 +215,13 @@ export default {
               }
 
               ._img{
-                @apply bg-no-repeat bg-contain w-230px h-210px
+                @apply bg-no-repeat bg-contain w-230px h-210px mx-auto mb-45px
                       flex flex-col items-end justify-center;
                 background-image: url('/images/socios/bg_partner_item.png')
               }
 
               ._text{
-                @apply flex flex-col gap-8px;
+                @apply flex flex-col gap-4px w-4/5 mx-auto;
                 h2{
                   @apply max-w-600px font-bold;
                 }
@@ -234,8 +248,8 @@ export default {
           }
 
           ._down_arrow{
-            @apply w-full h-30px transform rotate-z-90
-                  sticky mt-0px -mr-0px -mt-9px left-1/2 -top-18px-25px z-2
+            @apply w-30px h-30px transform rotate-z-90
+                  absolute mt-0px -mr-0px -mt-9px left-1/2 -top-3px z-2
                   bg-no-repeat bg-contain;
             background-image: url('/images/arrow_down.png');
           }
@@ -249,10 +263,18 @@ export default {
         >*{
           @apply px-15px;
 
+          p{
+            @apply m-0;
+          }
+
           form{
             @apply p-0;
           }
         }
+      }
+
+      .slick-arrow {
+        display: none !important;
       }
     }
   }

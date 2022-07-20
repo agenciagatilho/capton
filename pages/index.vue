@@ -199,6 +199,7 @@ export default {
       }
 
       ._first_focus_boost{
+        @apply mt-30px;
         ._item_carousel_box{
           @apply max-w-385px;
         }

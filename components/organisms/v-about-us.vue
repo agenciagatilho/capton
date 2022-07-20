@@ -2,12 +2,12 @@
   <v-container class="_about_us">
     <span>
       <div class="_down_arrow" />
-      <ul>
+      <component :is="$device.isDesktop ? 'ul' : 'VueSlickCarousel'" v-bind="settings">
         <li v-for="(item, index) in item.items" :key="'about_us_'+index" class="_item">
           <h2>{{ index + 1 }}. {{ item.title }}</h2>
           <p>{{ item.description }}</p>
         </li>
-      </ul>
+      </component>
       <div class="_animated_arrow" />
     </span>
     <button @click="goTo('contato', true)">
@@ -17,7 +17,13 @@
 </template>
 
 <script>
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
+  components: {
+    VueSlickCarousel
+  },
   props: {
     item: {
       type: Object,
@@ -26,7 +32,15 @@ export default {
   },
   data () {
     return {
-      boxSize: 0
+      boxSize: 0,
+      settings: {
+        dots: false,
+        arrows: false,
+        infinite: false,
+        speed: 300,
+        slidesToScroll: 1,
+        slidesToShow: 1
+      }
     }
   },
   mounted () {
@@ -102,7 +116,7 @@ export default {
       >span{
         @apply flex;
       }
-      ul{
+      ul, .slick-slider{
         @apply flex flex-col gap-75px;
 
         ._item{
@@ -172,17 +186,22 @@ export default {
 
   @media screen and (max-width: 768px) {
     ._about_us{
+      @apply mt-40px mb-80px;
       .container{
-        @apply gap-40px pt-50px;
-        ul{
-          @apply gap-50px grid grid-rows-1 w-3000px overflow-x-auto pt-100px -mt-100px;
-          grid-auto-flow: column;
-
+        @apply gap-40px pt-0px px-0;
+        >span{
+          @apply block;
+        }
+        .slick-slider{
           ._item{
-            @apply gap-40px pl-0px w-90vw pt-30px justify-start;
+            @apply gap-40px pl-0px w-90vw pt-50px justify-start;
+
+            >*{
+              @apply px-15px;
+            }
 
             h2{
-              @apply max-w-500px;
+              @apply max-w-500px mb-40px;
             }
             p{
               @apply max-w-590px;
@@ -206,15 +225,15 @@ export default {
             &::before{
               content: '';
               @apply absolute left-0 top-0px
-                     h-2px -mt-26px -ml-10vw;
+                     h-2px mt-0px -ml-10vw;
               width: calc(100% + 20vw)
             }
           }
         }
 
         ._down_arrow{
-          @apply w-30px h-30px mt-0 -ml-10px transform rotate-z-90
-                absolute left-1/2 -top-40px z-1
+          @apply w-30px h-30px -mt-25px -ml-10px transform rotate-z-90
+                absolute left-1/2 top-10px z-1
                 bg-no-repeat bg-cover;
           background-image: url('/images/arrow_down.png');
         }
@@ -225,6 +244,9 @@ export default {
       }
       button{
         @apply w-max mx-auto;
+      }
+      .slick-arrow {
+        display: none !important;
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <section
     ref="splide"
-    class="splide"
+    class="splide v-new-carousel"
     :style="`--close: ${closeHeight}; --open: ${openHeight};`"
   >
     <div class="splide__arrows" />
@@ -47,7 +47,7 @@ export default {
     }
   },
   mounted () {
-    const splides = document.querySelectorAll('.splide')
+    const splides = document.querySelectorAll('.v-new-carousel')
 
     splides.forEach((item) => {
       if (!item.classList.contains('is-initialized')) {
@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss">
-.splide{
+.v-new-carousel{
   @apply visible;
   .splide__list {
     @apply h-$close min-h-$close;
@@ -104,10 +104,6 @@ export default {
     &._v_show{
       @apply min-h-$open;
     }
-  }
-
-  .splide__arrows{
-    @apply hidden;
   }
 
   .splide__pagination {
@@ -133,9 +129,12 @@ export default {
     }
   }
 }
+.splide__arrows{
+  @apply hidden;
+}
 
 @media screen and (max-width: 768px) {
-  .splide{
+  .v-new-carousel{
     .splide__list {
       &._v_show{
       }

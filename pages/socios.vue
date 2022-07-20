@@ -2,8 +2,11 @@
   <main id="socios">
     <v-banner :item="socios.banner" cta="/" class="_banner_socios" />
     <v-container class="_partners">
-      <div class="_down_arrow" />
-      <component :is="$device.isDesktop ? 'ul' : 'VueSlickCarousel'" v-bind="settings">
+      <div v-if="$device.isDesktop" class="_down_arrow" />
+      <div v-else class="_down_dots">
+        <span v-for="(item, index) in socios.partners" :key="'about_us_dots_'+index" />
+      </div>
+      <ul>
         <li v-for="(item, index) in socios.partners" :key="'partners_'+index" class="_item">
           <span class="_img">
             <v-image :src="`images/socios/${item.name}.png`" width="127px" height="127px" />
@@ -14,7 +17,7 @@
             <p v-html="item.description" />
           </div>
         </li>
-      </component>
+      </ul>
       <div class="_animated_arrow" />
     </v-container>
     <v-contact-form-socios id="contato" :item="socios.visionBeyound" />
@@ -22,14 +25,8 @@
 </template>
 
 <script>
-import VueSlickCarousel from 'vue-slick-carousel'
 import socios from '@/data/ptbr/partners.json'
-import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
-  components: {
-    VueSlickCarousel
-  },
   data () {
     return {
       socios,
@@ -44,14 +41,39 @@ export default {
     }
   },
   mounted () {
-    if (this.$device.isDesktop) {
-      const gsap = this.$gsap.base
-      const ScrollTrigger = this.$gsap.ScrollTrigger
+    const gsap = this.$gsap.base
+    const ScrollTrigger = this.$gsap.ScrollTrigger
 
-      const items = gsap.utils.toArray('._partners ._item')
-      const arrowMasked = document.querySelector('._partners ._animated_arrow')
+    const items = gsap.utils.toArray('._partners ._item')
+    const dots = document.querySelectorAll('._down_dots span')
+    const arrowMasked = document.querySelector('._partners ._animated_arrow')
 
-      items.forEach((item, index) => {
+    ScrollTrigger.create({
+      trigger: document.querySelector('._partners'),
+      start: 'top center',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        if (((self.end - self.start) * self.progress) - 140 > 0) {
+          gsap.to(
+            '._down_dots',
+            {
+              y: ((self.end - self.start) * self.progress) - 140
+            }
+          )
+        } else {
+          gsap.to(
+            '._down_dots',
+            {
+              y: 0,
+              duration: 1
+            }
+          )
+        }
+      }
+    })
+
+    items.forEach((item, index) => {
+      if (this.$device.isDesktop) {
         const animOpacity = gsap.fromTo(item,
           {
             opacity: 0.4
@@ -88,8 +110,35 @@ export default {
           toggleActions: 'play none reverse none',
           animation: animRotate
         })
-      })
-    }
+      } else {
+        const animOpacity = gsap.fromTo(item,
+          {
+            opacity: 0.4 / index
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1
+          }
+        )
+
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top center',
+          end: 'center bottom',
+          toggleActions: 'play none restart none',
+          animation: animOpacity,
+          onEnter: () => {
+            dots[index]?.classList.add('enter')
+            dots.forEach((i) => { if (i !== dots[index]) { i.classList.remove('enter') } })
+          },
+          onLeaveBack: () => {
+            dots[index]?.classList.add('enter')
+            dots.forEach((i) => { if (i !== dots[index]) { i.classList.remove('enter') } })
+          }
+        })
+      }
+    })
   }
 }
 </script>
@@ -110,7 +159,7 @@ export default {
       @apply pb-150px;
       .container{
         @apply relative flex gap-0px pt-75px;
-        ul, .slick-slider{
+        ul{
           @apply flex flex-col gap-120px;
 
           ._item{
@@ -200,14 +249,13 @@ export default {
         @apply pb-100px pt-50px;
         .container{
           @apply p-0px;
-          .slick-slider{
-            @apply block grid-rows-1
-                   gap-100px
+          ul{
+            @apply flex flex-col gap-100px
                    overflow-x-auto overflow-y-hidden;
             grid-auto-flow: column;
 
             ._item{
-              @apply gap-70px p-0 pt-50px pl-0px relative items-center;
+              @apply gap-0px p-0 pl-0px relative flex-col items-center;
 
               &:nth-child(1){
                 opacity: 1 !important;
@@ -240,9 +288,7 @@ export default {
               }
 
               &::before{
-                width: calc(100% + 20vw + 100px);
-                @apply absolute -left-0 top-0
-                        h-2px -mt-0px -ml-10vw;
+                @apply hidden;
               }
             }
             .slick-slide:nth-last-child(1){
@@ -252,11 +298,35 @@ export default {
             }
           }
 
+          ._down_dots{
+            @apply absolute w-0 h-0 top-0 left-10px
+                    flex flex-col;
+
+            span{
+              @apply relative w-5px h-10vh;
+              transition: all ease-in-out .5s;
+              margin: calc(3vh + 7px) 0;
+              &::before{
+                content: '';
+                @apply top-1/2 w-5px h-6vh m-0 rounded-full
+                      transform -translate-y-1/2
+                      absolute top-0 left-0;
+                background: #97BCD580;
+                transition: all ease-in-out 1s;
+              }
+
+              &.enter{
+                margin: calc(6vh + 7px) 0;
+                &::before{
+                  @apply h-12vh;
+                  background: #97BCD5;
+                }
+              }
+            }
+          }
+
           ._down_arrow{
-            @apply w-30px h-30px transform rotate-z-90
-                  absolute mt-0px -mr-0px -mt-9px left-1/2 -top-3px z-2
-                  bg-no-repeat bg-contain;
-            background-image: url('/images/arrow_down.png');
+            @apply hidden;
           }
           ._animated_arrow{
             @apply hidden;

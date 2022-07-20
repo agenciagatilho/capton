@@ -1,5 +1,5 @@
 <template>
-  <div class="_mobile_menu" :class="{'show': state.show}">
+  <div class="_mobile_menu" :class="{'show': state.show}" @click="toggleMenu">
     <v-menu-button />
     <menu>
       <component :is="isButton('/')" class="not" to="/" @click="goToTop">
@@ -56,6 +56,9 @@ export default {
     }
   },
   methods: {
+    toggleMenu () {
+      this.state.show = !this.state.show
+    },
     isButton (page) {
       const cleanPage = page.split('#')[0]
       if (this.$route.path !== cleanPage && page.split('#')[0]) {
@@ -97,6 +100,10 @@ export default {
             transform translate-x-1/1
             pointer-events-none;
       transition: all 0.2s ease-in;
+
+      ._menu_button{
+        @apply pointer-events-none;
+      }
 
       svg, svg *{
         @apply fill-$secondary;

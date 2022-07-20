@@ -129,6 +129,7 @@ export default {
 
         .slick-arrow {
           @apply top-auto -bottom-50px p-0 bg-transparent;
+          display: none !important;
 
           &.slick-next{
             @apply left-1/2 right-auto ml-10px;

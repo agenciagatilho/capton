@@ -1,7 +1,10 @@
 <template>
   <v-container class="_about_us">
     <span>
-      <div class="_down_arrow" />
+      <div v-if="$device.isDesktop" class="_down_arrow" />
+      <div v-else class="_down_dots">
+        <span v-for="(item, index) in item.items" :key="'about_us_dots_'+index" />
+      </div>
       <ul>
         <li v-for="(item, index) in item.items" :key="'about_us_'+index" class="_item">
           <h2>{{ 3 > index ? `${index + 1}.`: '' }} {{ item.title }}</h2>
@@ -42,7 +45,32 @@ export default {
     const ScrollTrigger = this.$gsap.ScrollTrigger
 
     const items = gsap.utils.toArray('._about_us ._item')
+    const dots = document.querySelectorAll('._down_dots span')
     const arrowMasked = document.querySelector('._about_us ._animated_arrow')
+
+    ScrollTrigger.create({
+      trigger: document.querySelector('._about_us'),
+      start: 'top center',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        if (((self.end - self.start) * self.progress) - 120 > 0) {
+          gsap.to(
+            '._down_dots',
+            {
+              y: ((self.end - self.start) * self.progress) - 120
+            }
+          )
+        } else {
+          gsap.to(
+            '._down_dots',
+            {
+              y: 0,
+              duration: 1
+            }
+          )
+        }
+      }
+    })
 
     items.forEach((item, index) => {
       if (this.$device.isDesktop) {
@@ -96,14 +124,16 @@ export default {
         ScrollTrigger.create({
           trigger: item,
           start: 'top center',
-          end: 'center center',
+          end: 'center bottom',
           toggleActions: 'play none restart none',
           animation: animOpacity,
           onEnter: () => {
-            item.classList.add('enter')
+            dots[index]?.classList.add('enter')
+            dots.forEach((i) => { if (i !== dots[index]) { i.classList.remove('enter') } })
           },
           onLeaveBack: () => {
-            item.classList.remove('enter')
+            dots[index]?.classList.add('enter')
+            dots.forEach((i) => { if (i !== dots[index]) { i.classList.remove('enter') } })
           }
         })
       }
@@ -214,27 +244,18 @@ export default {
         ul{
           @apply gap-80px;
           ._item{
-            @apply gap-40px pl-0px w-90vw pt-0px justify-start mx-auto;
+            @apply gap-40px pl-0px w-90vw pt-0px justify-start mx-auto min-h-0px;
 
             >*{
               @apply px-15px;
             }
 
             h2{
-              @apply max-w-500px mb-40px;
+              @apply max-w-500px mb-0px;
             }
 
             &::before{
-              background: #97BCD580;
-              height: calc(50%);
-              @apply top-1/2 w-5px m-0 rounded-full
-                     transform -translate-y-1/2;
-              transition: all ease-in-out 1s;
-            }
-
-            &.enter::before{
-              background: #97BCD5;
-              height: calc(80%);
+              @apply hidden;
             }
           }
           .slick-slide:nth-last-child(1){
@@ -244,6 +265,32 @@ export default {
           }
         }
 
+        ._down_dots{
+          @apply absolute w-0 h-0 top-0 left-10px
+                  flex flex-col;
+
+          span{
+            @apply relative w-5px h-10vh;
+            transition: all ease-in-out .5s;
+            margin: calc(5vh + 7px) 0;
+            &::before{
+              content: '';
+              @apply top-1/2 w-5px h-10vh m-0 rounded-full
+                     transform -translate-y-1/2
+                     absolute top-0 left-0;
+              background: #97BCD580;
+              transition: all ease-in-out 1s;
+            }
+
+            &.enter{
+              margin: calc(10vh + 7px) 0;
+              &::before{
+                @apply h-20vh;
+                background: #97BCD5;
+              }
+            }
+          }
+        }
         ._down_arrow{
           @apply hidden;
         }

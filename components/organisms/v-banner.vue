@@ -115,13 +115,13 @@ export default {
         @apply pb-40px gap-30px;
 
         ._text{
-          @apply p-0;
+          @apply p-0 -mt-80px;
           .alt{
             @apply mx-auto;
           }
         }
         ._mouse_icon{
-          @apply left-1/2 transform -translate-x-1/2;
+          @apply left-1/2 transform -translate-x-1/2 bottom-80px;
         }
       }
     }

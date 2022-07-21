@@ -70,7 +70,7 @@ export default {
                 pauseOnHover: false,
                 perPage: 1,
                 autoScroll: {
-                  speed: 0.1
+                  speed: 0.5
                 }
               }
         )

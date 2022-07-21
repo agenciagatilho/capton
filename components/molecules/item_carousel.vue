@@ -120,6 +120,9 @@ export default {
         svg{
           @apply mx-auto;
         }
+        button{
+          @apply mx-auto;
+        }
 
         &.only{
           grid-template-rows: 1fr max-content;

@@ -74,23 +74,17 @@ export default {
 
     items.forEach((item, index) => {
       if (this.$device.isDesktop) {
-        const animOpacity = gsap.fromTo(item,
-          {
-            opacity: 0.4
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1
-          }
-        )
-
         ScrollTrigger.create({
           trigger: item,
           start: 'top center',
           end: 'bottom center',
           toggleActions: 'restart none reverse none',
-          animation: animOpacity
+          onEnter: () => {
+            item.classList.add('enter')
+          },
+          onLeaveBack: () => {
+            item.classList.remove('enter')
+          }
         })
         const animRotate = gsap.fromTo(arrowMasked,
           {
@@ -110,29 +104,19 @@ export default {
           animation: animRotate
         })
       } else {
-        const animOpacity = gsap.fromTo(item,
-          {
-            opacity: 0.4 / index
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1
-          }
-        )
-
         ScrollTrigger.create({
           trigger: item,
           start: 'top center',
           end: 'center bottom',
           toggleActions: 'play none restart none',
-          animation: animOpacity,
           onEnter: () => {
             dots[index]?.classList.add('enter')
+            item.classList.add('enter')
             dots.forEach((i) => { if (i !== dots[index]) { i.classList.remove('enter') } })
           },
           onLeaveBack: () => {
             dots[index]?.classList.add('enter')
+            item.classList.remove('enter')
             dots.forEach((i) => { if (i !== dots[index]) { i.classList.remove('enter') } })
           }
         })
@@ -171,8 +155,12 @@ export default {
         ._item{
           @apply flex flex-col gap-40px justify-center
                  pl-65px relative
-                 min-h-300px;
+                 min-h-300px opacity-35;
           scroll-snap-align: top;
+
+          &.enter {
+            @apply opacity-100;
+          }
 
           h2{
             @apply max-w-500px;

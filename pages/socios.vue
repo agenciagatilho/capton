@@ -74,23 +74,17 @@ export default {
 
     items.forEach((item, index) => {
       if (this.$device.isDesktop) {
-        const animOpacity = gsap.fromTo(item,
-          {
-            opacity: 0.4
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1
-          }
-        )
-
         ScrollTrigger.create({
           trigger: item,
           start: 'top center',
           end: 'bottom center',
           toggleActions: 'play none reverse none',
-          animation: animOpacity
+          onEnter: () => {
+            item.classList.add('enter')
+          },
+          onLeaveBack: () => {
+            item.classList.remove('enter')
+          }
         })
 
         const animRotate = gsap.fromTo(arrowMasked,
@@ -111,28 +105,18 @@ export default {
           animation: animRotate
         })
       } else {
-        const animOpacity = gsap.fromTo(item,
-          {
-            opacity: 0.4 / index
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1
-          }
-        )
-
         ScrollTrigger.create({
           trigger: item,
           start: 'top center',
           end: 'center bottom',
           toggleActions: 'play none restart none',
-          animation: animOpacity,
           onEnter: () => {
             dots[index]?.classList.add('enter')
+            item.classList.add('enter')
             dots.forEach((i) => { if (i !== dots[index]) { i.classList.remove('enter') } })
           },
           onLeaveBack: () => {
+            item.classList.remove('enter')
             dots[index]?.classList.add('enter')
             dots.forEach((i) => { if (i !== dots[index]) { i.classList.remove('enter') } })
           }
@@ -163,11 +147,11 @@ export default {
           @apply flex flex-col gap-120px;
 
           ._item{
-            @apply flex gap-55px pl-90px relative;
+            @apply flex gap-55px pl-90px relative opacity-35;
+            transition: opacity ease-in-out 1s;
 
-            &:nth-child(1){
-              opacity: 1 !important;
-              transform: none !important;
+            &.enter {
+              @apply opacity-100;
             }
 
             ._img{

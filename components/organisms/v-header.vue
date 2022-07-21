@@ -27,15 +27,6 @@
         </component>
 
         <component
-          :is="isButton(sitemap.investInGoodBusiness.url)"
-          class="not"
-          :to="sitemap.investInGoodBusiness.url"
-          @click="goTo(sitemap.investInGoodBusiness.url)"
-        >
-          {{ sitemap.investInGoodBusiness.title }}
-        </component>
-
-        <component
           :is="isButton(sitemap.contact.url)"
           class="not"
           :to="sitemap.contact.url"

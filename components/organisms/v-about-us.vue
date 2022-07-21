@@ -209,7 +209,7 @@ export default {
         @apply w-200px h-200px mt-70px mr-0px ml-auto
               sticky right-0 top-1/4 z-1
               bg-no-repeat bg-cover;
-        background-image: url('/images/masked_arrow_background.gif');
+        background-image: url('/images/background_banner.gif');
         mask: no-repeat center url('/images/masked_arrow_mask.png');
         -webkit-mask: no-repeat center url('/images/masked_arrow_mask.png');
         mask-size: contain;

@@ -101,7 +101,7 @@ export default {
 
     &::before{
       content: '';
-      background-image: url('/images/background_header.gif');
+      background-image: url('/images/background_banner.gif');
       transition: all 0.2s ease-in-out;
       @apply absolute w-full h-full top-0 left-0 -z-1 opacity-0
              bg-no-repeat bg-center bg-cover;

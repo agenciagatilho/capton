@@ -1,5 +1,5 @@
 <template>
-  <div class="mouse_icon" v-if="$device.isDesktop">
+  <div class="mouse_icon desktop" v-if="$device.isDesktop">
     <v-image src="icons/mouse_icon.svg" />
     <v-image src="icons/arrow_mouse.svg" />
   </div>
@@ -30,6 +30,9 @@ export default {
 
   @media screen and (max-width: 768px) {
     .mouse_icon{
+      .desktop{
+        @apply hidden;
+      }
       >*{
           animation: mouseArrow 2s ease infinite;
       }

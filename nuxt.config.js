@@ -26,6 +26,8 @@ export default {
       { name: 'author', content: 'Gatilho' },
       { name: 'copyright', content: 'Gatilho' },
 
+      { name: 'facebook-domain-verification', content: '414tek0lpwbph7u2y9sjkf3q4wr4iu' },
+
       { name: 'title', content: 'Capton Impulsionadora de Negócios' },
       { name: 'description', content: 'A Capton é a primeira impulsionadora de negócios focada na ajuda e definição de processos e mentalidade. Venha navegar novos mares conosco.' },
 
@@ -55,7 +57,8 @@ export default {
     { src: '~/plugins/getCities.js', mode: 'client' },
     { src: '~/plugins/pinia.js' },
     { src: '~/plugins/toast.js', mode: 'client' },
-    { src: '~/plugins/gsap.js', mode: 'client' }
+    { src: '~/plugins/gsap.js', mode: 'client' },
+    { src: '~/plugins/GTM.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

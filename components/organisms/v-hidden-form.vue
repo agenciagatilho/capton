@@ -7,6 +7,17 @@
       <v-input :placeholder="item.form.name" id="name" :maxlength="100" />
       <v-input :placeholder="item.form.telphone" id="telphone" :mask="'(##) #####-####'" :maxlength="15" />
       <v-input :placeholder="item.form.email" id="email" type="email" :maxlength="255" />
+      <div class="_privacy">
+        <p>{{ sitemap.privacy.title }}</p>
+        <label>
+          <input type="checkbox" name="accept_privacy">
+          <a :href="sitemap.privacy.url" target="_blank">{{ item.form.accept_privacy }}</a>
+        </label>
+        <label>
+          <input type="checkbox" name="accept_receive_email">
+          {{ item.form.accept_receive_email }}
+        </label>
+      </div>
       <button type="submit">
         {{ item.form.send }}
       </button>
@@ -15,6 +26,7 @@
 </template>
 
 <script>
+import sitemap from '@/data/sitemap.json'
 export default {
   props: {
     cta: {
@@ -24,6 +36,7 @@ export default {
   },
   data () {
     return {
+      sitemap,
       item: {
         form: {
           name: 'Nome',
@@ -43,11 +56,24 @@ export default {
       e.preventDefault()
       const form = e.target
 
+      const tags = []
+      if (form.accept_receive_email.checked) { tags.push('aceitou envio de emails') }
+      if (form.accept_privacy.checked) { tags.push('aceitou politica de privacidade') }
+
       const data = {
         conversion_identifier: 'formulario_escondido_home_capton',
         name: form.name.value,
         email: form.email.value,
-        mobile_phone: form.telphone.value.replace(/[^0-9]/g, '')
+        mobile_phone: form.telphone.value.replace(/[^0-9]/g, ''),
+        available_for_mailing: form.accept_receive_email.checked,
+        tags,
+        legal_bases: [
+          {
+            category: 'communications',
+            type: 'consent',
+            status: form.accept_privacy.checked ? 'granted' : 'declined'
+          }
+        ]
       }
 
       this.$api.send(data).then((res) => {
@@ -78,6 +104,23 @@ export default {
              w-full h-0 overflow-hidden
              transform origin-top ;
       transition: height 0.15s linear, opacity 0.3s ease-in-out;
+
+      ._privacy{
+        @apply flex flex-col gap-10px
+                px-10px;
+
+        p{
+          @apply font-bold;
+        }
+
+        label{
+          @apply text-16px;
+
+          a{
+            @apply underline;
+          }
+        }
+      }
 
       button{
         @apply w-max ml-auto font-normal;

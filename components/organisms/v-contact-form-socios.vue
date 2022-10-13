@@ -10,6 +10,17 @@
       <v-input :placeholder="item.form.city" id="city" :maxlength="100" />
       <v-input :placeholder="item.form.company" id="company" :maxlength="100" />
       <v-input :placeholder="item.form.message" id="message" type="textarea" :maxlength="2550" :rows="4" />
+      <div class="_privacy">
+        <p>{{ sitemap.privacy.title }}</p>
+        <label>
+          <input type="checkbox" name="accept_privacy">
+          <a :href="sitemap.privacy.url" target="_blank">{{ item.form.accept_privacy }}</a>
+        </label>
+        <label>
+          <input type="checkbox" name="accept_receive_email">
+          {{ item.form.accept_receive_email }}
+        </label>
+      </div>
       <button type="submit">
         {{ item.form.send }}
       </button>
@@ -18,6 +29,7 @@
 </template>
 
 <script>
+import sitemap from '@/data/sitemap.json'
 export default {
   props: {
     item: {
@@ -25,10 +37,19 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      sitemap
+    }
+  },
   methods: {
     submit (e) {
       e.preventDefault()
       const form = e.target
+
+      const tags = []
+      if (form.accept_receive_email.checked) { tags.push('aceitou envio de emails') }
+      if (form.accept_privacy.checked) { tags.push('aceitou politica de privacidade') }
 
       const data = {
         conversion_identifier: 'contato_socios_capton',
@@ -36,7 +57,16 @@ export default {
         email: form.email.value,
         city: form.city.value,
         company_name: form.company.value,
-        cf_mensagem: form.message.value
+        cf_mensagem: form.message.value,
+        available_for_mailing: form.accept_receive_email.checked,
+        tags,
+        legal_bases: [
+          {
+            category: 'communications',
+            type: 'consent',
+            status: form.accept_privacy.checked ? 'granted' : 'declined'
+          }
+        ]
       }
 
       this.$api.send(data).then((res) => {
@@ -67,6 +97,23 @@ export default {
 
       #form_contact_socios{
         @apply pl-100px flex flex-col gap-20px;
+
+        ._privacy{
+          @apply flex flex-col gap-10px
+                 px-10px;
+
+          p{
+            @apply font-bold;
+          }
+
+          label{
+            @apply text-16px;
+
+            a{
+              @apply underline;
+            }
+          }
+        }
 
         button{
           @apply ml-auto w-max px-50px rounded-15px;

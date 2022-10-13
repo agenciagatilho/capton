@@ -99,7 +99,9 @@
       "city": "Cidade/Estado",
       "operating": "Segmento de atuação",
       "site": "Site",
-      "send": "Enviar"
+      "send": "Enviar",
+      "accept_privacy": "Aceito os termos, condições e a política de uso de dados.",
+      "accept_receive_email": "Aceito receber e-mails sobre lançamentos, mercado e informações sobre a Capton."
     }
   },
   "investorsChallenger": {

@@ -1,11 +1,11 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  // runtimeCompiler: true,
-  // resolve: {
-  //   alias: {
-  //     vue: 'vue/dist/vue.js'
-  //   }
+  // router: {
+  //   base: '/test-gatilho/capton'
+  // },
+  // generate: {
+  //   dir: 'capton'
   // },
 
   // Global page headers: https://go.nuxtjs.dev/config-head

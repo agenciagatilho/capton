@@ -1,0 +1,26 @@
+{
+  "home": {
+    "title": "",
+    "url": "/"
+  },
+  "whoWeAre": {
+    "title": "quem somos",
+    "url": "socios"
+  },
+  "methodology": {
+    "title": "metodologia",
+    "url": "/#metodologia"
+  },
+  "contact": {
+    "title": "contato",
+    "url": "#contato"
+  },
+  "privacy": {
+    "title": "Política de Privacidade",
+    "url": "politica-de-privacidade"
+  },
+  "gatilho": {
+    "title": "Desenvolvido por Gatilho",
+    "url": "https://agenciagatilho.com.br/"
+  }
+}

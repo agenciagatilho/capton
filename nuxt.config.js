@@ -43,6 +43,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
+    ],
+    script: [
+      { type:"text/javascript", async: true, src: "https://d335luupugsy2.cloudfront.net/js/loader-scripts/6e4979b6-caea-4169-8d15-923a95ff98ee-loader.js" }
     ]
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
